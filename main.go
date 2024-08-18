@@ -27,5 +27,4 @@ func tmepMysql() {
 
 func main() {
 	config.LoadResource("application.yaml")
-	tmepMysql()
 }

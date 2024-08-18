@@ -3,9 +3,9 @@ package config
 // Config 读取application.yaml 文件的配置类
 type Config struct {
 	NacosConfig NacosConfig `yaml:"nacos" mapstructure:"nacos"`
-	//NacosBootstrapConfig NacosBootstrapConfig
-	DataBases DataBases `yaml:"databases" mapstructure:"databases"`
-	Server    Server    `yaml:"server" mapstructure:"server"`
+	DataBases   DataBases   `yaml:"databases" mapstructure:"databases"`
+	Server      Server      `yaml:"server" mapstructure:"server"`
+	Logs        LogConfig   `yaml:"log" mapstructure:"log"`
 }
 
 // NacosConfig 结构体 配置了连接Nacos的参数
@@ -51,4 +51,11 @@ type MySQLConfig struct {
 	Ip       string `yaml:"ip" mapstructure:"ip"`
 	Port     int32  `yaml:"port" mapstructure:"port"`
 	Database string `yaml:"database" mapstructure:"database"`
+}
+
+type LogConfig struct {
+	Dir        string `yaml:"dir"  mapstructure:"dir"`
+	Level      string `yaml:"level" mapstructure:"level"`
+	DayFormat  string `yaml:"dayFormat" mapstructure:"dayFormat"`
+	TimeFormat string `yaml:"timeFormat" mapstructure:"timeFormat"`
 }
