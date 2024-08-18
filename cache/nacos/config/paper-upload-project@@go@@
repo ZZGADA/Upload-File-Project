@@ -1,0 +1,10 @@
+server:
+    port: 8081
+
+databases:
+    mysql:
+        username: root
+        password: zZ-szshyjbz16D
+        ip: 8.130.99.124
+        port: 33170
+        database: ssm_db

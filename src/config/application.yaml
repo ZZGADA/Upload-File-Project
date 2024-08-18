@@ -1,0 +1,15 @@
+nacos:
+  dir:
+    log: ./logs/nacos
+    cache: ./cache/nacos
+  logLevel: debug
+  username: nacos
+  password: nacos
+  timeoutMs: 5000
+  notLoadCacheAtStart: true
+  ip: 127.0.0.1
+  port: 8848
+  contextPath: /nacos
+  bootstrap:
+    dataId: paper-upload-project
+    group: go
