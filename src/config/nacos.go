@@ -13,23 +13,28 @@ import (
 	"log"
 )
 
-// 初始化NacosClient 包括动态配置和服务发现
-func initNacosClient() (config_client.IConfigClient, naming_client.INamingClient) {
-	naocsConfig := ProjectConfig.NacosConfig
+var (
+	NacosConfigClient   config_client.IConfigClient
+	NacosServicesClient naming_client.INamingClient
+	NacosServerConfig   = &NacosConfig{}
+)
 
+// 初始化NacosClient 包括动态配置和服务发现
+func initNacosClient() {
+	NacosServerConfig = &ProjectConfig.NacosConfig
 	sc := []constant.ServerConfig{
-		*constant.NewServerConfig(naocsConfig.IP, naocsConfig.Port, constant.WithContextPath(naocsConfig.ContextPath)),
+		*constant.NewServerConfig(NacosServerConfig.IP, NacosServerConfig.Port, constant.WithContextPath(NacosServerConfig.ContextPath)),
 	}
 
 	//create ClientConfig
 	cc := *constant.NewClientConfig(
-		constant.WithTimeoutMs(naocsConfig.TimeoutMs),
-		constant.WithNotLoadCacheAtStart(naocsConfig.NotLoadCacheAtStart),
-		constant.WithLogDir(naocsConfig.Dir.Log),
-		constant.WithCacheDir(naocsConfig.Dir.Cache),
-		constant.WithLogLevel(naocsConfig.LogLevel),
-		constant.WithUsername(naocsConfig.Username),
-		constant.WithPassword(naocsConfig.Password),
+		constant.WithTimeoutMs(NacosServerConfig.TimeoutMs),
+		constant.WithNotLoadCacheAtStart(NacosServerConfig.NotLoadCacheAtStart),
+		constant.WithLogDir(NacosServerConfig.Dir.Log),
+		constant.WithCacheDir(NacosServerConfig.Dir.Cache),
+		constant.WithLogLevel(NacosServerConfig.LogLevel),
+		constant.WithUsername(NacosServerConfig.Username),
+		constant.WithPassword(NacosServerConfig.Password),
 	)
 
 	nacosConfigClient, errConfig := clients.NewConfigClient(
@@ -55,7 +60,7 @@ func initNacosClient() (config_client.IConfigClient, naming_client.INamingClient
 
 	log.Printf("Nacos config client has been created ")
 
-	return nacosConfigClient, nacosServicesClient
+	NacosConfigClient, NacosServicesClient = nacosConfigClient, nacosServicesClient
 }
 
 // 拉去nacos的动态配置文件
@@ -69,7 +74,7 @@ func pullNacosBootStrapConfig() {
 		log.Panicf("nacos 拉取动态文件失败 ：%v", err)
 	}
 
-	if err := yaml.Unmarshal([]byte(bootstrapDynamicConfig), &ProjectConfig); err != nil {
+	if err := yaml.Unmarshal([]byte(bootstrapDynamicConfig), ProjectConfig); err != nil {
 		log.Printf("动态配置解析到NacosBootstrapConfig失败，%#v", err)
 	}
 
@@ -78,5 +83,29 @@ func pullNacosBootStrapConfig() {
 	if err := viper.ReadConfig(bytes.NewBuffer(byteAll)); err != nil {
 		log.Panicf("nacos远程动态配置和本地配置合并后写入失败，%#v", err)
 	}
-	log.Printf("Nacos bootstrap config is %v", ProjectConfig)
+	log.Printf("Nacos bootstrap config is %v", *ProjectConfig)
+}
+
+func registerServiceInstance(client naming_client.INamingClient, param vo.RegisterInstanceParam) {
+	success, err := client.RegisterInstance(param)
+	if !success || err != nil {
+		panic("RegisterServiceInstance failed!" + err.Error())
+	}
+	fmt.Printf("RegisterServiceInstance,param:%+v,result:%+v \n\n", param, success)
+
+}
+
+func registerUploadFileService() {
+	//Register
+	registerServiceInstance(NacosServicesClient, vo.RegisterInstanceParam{
+		Ip:          ServerAllConfig.IP,
+		Port:        ServerAllConfig.Port,
+		ServiceName: ServerAllConfig.Name,
+		GroupName:   ServerAllConfig.Group,
+		Weight:      10,
+		Enable:      true,
+		Healthy:     true,
+		Ephemeral:   true,
+		Metadata:    map[string]string{"idc": "TAL"},
+	})
 }

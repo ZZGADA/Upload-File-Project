@@ -34,7 +34,11 @@ type BootStrap struct {
 }
 
 type Server struct {
-	Port int32 `yaml:"port" mapstructure:"port"`
+	IP     string `yaml:"ip" mapstructure:"ip"`
+	Port   uint64 `yaml:"port" mapstructure:"port"`
+	Name   string `yaml:"name" mapstructure:"name"`
+	Group  string `yaml:"group" mapstructure:"group"`
+	GinMod string `yaml:"ginMod" mapstructure:"ginMod"`
 }
 type DataBases struct {
 	Mysql MySQLConfig `yaml:"mysql" mapstructure:"mysql"`

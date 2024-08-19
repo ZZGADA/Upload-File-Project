@@ -2,16 +2,50 @@ package config
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"io"
-	"os"
 	"path/filepath"
 	"time"
 )
 
+var (
+	Log          *logrus.Logger
+	LogAllConfig = &LogConfig{}
+)
+
+// LoggerMiddleware 是一个 Gin 中间件，用于使用 Logrus 记录 HTTP 请求日志
+func LoggerMiddleware(logger *logrus.Logger) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		// 开始时间
+		// startTime := time.Now()
+
+		// 处理请求
+		c.Next()
+
+		// 结束时间
+		//endTime := time.Now()
+		//latencyTime := endTime.Sub(startTime)
+		////
+		//// 请求方式
+		//reqMethod := c.Request.Method
+		//// 请求路由
+		//reqUri := c.Request.RequestURI
+		//// 状态码
+		//statusCode := c.Writer.Status()
+		//// 请求IP
+		//clientIP := c.ClientIP()
+		//
+		//// 日志格式
+		//logInfoStr := fmt.Sprintf("%d----%s----[%s]:%s   latencyTime:%v", statusCode, reqMethod, clientIP, reqUri, latencyTime)
+	}
+}
+
 // 初始化日志logrus
-func initLogConfig() *logrus.Logger {
+func initLogConfig() {
+	LogAllConfig = &ProjectConfig.Logs
+
 	// 配置logrus
 	log := logrus.New()
 	log.SetFormatter(&logrus.TextFormatter{
@@ -19,7 +53,7 @@ func initLogConfig() *logrus.Logger {
 	})
 
 	// 设置日志级别
-	log.SetLevel(getLogLevel(ProjectConfig.Logs.Level))
+	log.SetLevel(getLogLevel(LogAllConfig.Level))
 
 	// 创建不同级别的日志文件
 	infoLog := newLumberjackLogger("info")
@@ -27,11 +61,11 @@ func initLogConfig() *logrus.Logger {
 	errorLog := newLumberjackLogger("error")
 	panicLog := newLumberjackLogger("panic")
 
-	// 创建多输出 writer  输出屏幕和输出到文件
-	infoWriter := io.MultiWriter(os.Stdout, infoLog)
-	warnWriter := io.MultiWriter(os.Stdout, warnLog)
-	errorWriter := io.MultiWriter(os.Stdout, errorLog)
-	panicWriter := io.MultiWriter(os.Stdout, panicLog)
+	// 创建多输出 writer  输出屏幕和输出到文件  os.Stdout
+	infoWriter := io.MultiWriter(infoLog)
+	warnWriter := io.MultiWriter(warnLog)
+	errorWriter := io.MultiWriter(errorLog)
+	panicWriter := io.MultiWriter(panicLog)
 
 	// 添加不同级别的 hook   --> 鸭子模型
 	log.AddHook(newLogHook(logrus.InfoLevel, infoWriter))
@@ -39,7 +73,7 @@ func initLogConfig() *logrus.Logger {
 	log.AddHook(newLogHook(logrus.ErrorLevel, errorWriter))
 	log.AddHook(newLogHook(logrus.PanicLevel, panicWriter))
 
-	return log
+	Log = log
 }
 
 type logHook struct {
@@ -68,8 +102,8 @@ func (hook *logHook) Fire(entry *logrus.Entry) error {
 }
 
 func newLumberjackLogger(level string) *lumberjack.Logger {
-	today := time.Now().Format(ProjectConfig.Logs.DayFormat)
-	logFolder := filepath.Join(ProjectConfig.Logs.Dir, today)
+	today := time.Now().Format(LogAllConfig.DayFormat)
+	logFolder := filepath.Join(LogAllConfig.Dir, today)
 	logFile := filepath.Join(logFolder, fmt.Sprintf("%s.log", level))
 
 	// Logger is an io.WriteCloser that writes to the specified filename.

@@ -8,17 +8,20 @@ import (
 	"time"
 )
 
+var MySQLClient *gorm.DB
+var MySQLAllConfig = &MySQLConfig{}
+
 // 初始化MySQLClient
 func initMySQLClient() *gorm.DB {
-
 	const mysqlConnectStr string = "%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local"
+	MySQLAllConfig = &ProjectConfig.DataBases.Mysql
 
 	dsn := fmt.Sprintf(mysqlConnectStr,
-		ProjectConfig.DataBases.Mysql.Username,
-		ProjectConfig.DataBases.Mysql.Password,
-		ProjectConfig.DataBases.Mysql.Ip,
-		ProjectConfig.DataBases.Mysql.Port,
-		ProjectConfig.DataBases.Mysql.Database)
+		MySQLAllConfig.Username,
+		MySQLAllConfig.Password,
+		MySQLAllConfig.Ip,
+		MySQLAllConfig.Port,
+		MySQLAllConfig.Database)
 
 	MySQLClientDB, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{

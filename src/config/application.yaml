@@ -1,3 +1,5 @@
+server:
+  ginMod: debug
 nacos:
   dir:
     log: ./logs/nacos
