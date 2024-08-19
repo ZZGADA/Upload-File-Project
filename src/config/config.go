@@ -22,7 +22,7 @@ func LoadResource(configFile string) {
 	readResourceFile(configFile)
 	initNacosClient()
 	pullNacosBootStrapConfig()
-	MySQLClient = initMySQLClient()
+	initMySQLClient()
 	initLogConfig()
 	initServer()
 }

@@ -12,7 +12,7 @@ var MySQLClient *gorm.DB
 var MySQLAllConfig = &MySQLConfig{}
 
 // 初始化MySQLClient
-func initMySQLClient() *gorm.DB {
+func initMySQLClient() {
 	const mysqlConnectStr string = "%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&parseTime=True&loc=Local"
 	MySQLAllConfig = &ProjectConfig.DataBases.Mysql
 
@@ -40,5 +40,5 @@ func initMySQLClient() *gorm.DB {
 	// SetConnMaxLifetime 设置了连接可复用的最大时间。
 	sqlDB.SetConnMaxLifetime(time.Hour)
 
-	return MySQLClientDB
+	MySQLClient = MySQLClientDB
 }

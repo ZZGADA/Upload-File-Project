@@ -2,17 +2,18 @@ package main
 
 import (
 	"UploadFileProject/src/config"
-	"UploadFileProject/src/test"
+	"UploadFileProject/src/controller"
 	"fmt"
 )
 
-func tmepMysql() {
-
-}
-
 func main() {
 	config.LoadResource("application.yaml")
-	test.TestGorm()
 
-	config.Router.Run(fmt.Sprintf(":%d", config.ServerAllConfig.Port))
+	controller.InitController(config.Router)
+
+	var runPort = fmt.Sprintf(":%d", config.ServerAllConfig.Port)
+
+	if err := config.Router.Run(runPort); err != nil {
+		config.Log.Panicf("gin start panic,%#v", err)
+	}
 }

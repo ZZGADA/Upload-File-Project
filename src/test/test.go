@@ -4,6 +4,7 @@ import (
 	"UploadFileProject/src/config"
 	"UploadFileProject/src/entity/bo"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"reflect"
 )
 
@@ -22,4 +23,16 @@ func TestGorm() {
 	for _, val := range users {
 		fmt.Printf("%#v", val)
 	}
+}
+
+func TestGetApi() {
+	// /search?query=gin  路由携带参数
+	config.Router.GET("/search", func(c *gin.Context) {
+		query := c.Query("query")
+		more := c.Query("more")
+		config.Log.Info("ioioisoaioa")
+		config.Log.Warn("pppppppppppp")
+		c.String(200, "Search query is "+query+" more is "+more)
+	})
+
 }
