@@ -1,11 +1,14 @@
 package config
 
+import "UploadFileProject/src/global"
+
 // Config 读取application.yaml 文件的配置类
 type Config struct {
-	NacosConfig NacosConfig `yaml:"nacos" mapstructure:"nacos"`
-	DataBases   DataBases   `yaml:"databases" mapstructure:"databases"`
-	Server      Server      `yaml:"server" mapstructure:"server"`
-	Logs        LogConfig   `yaml:"log" mapstructure:"log"`
+	NacosConfig    NacosConfig           `yaml:"nacos" mapstructure:"nacos"`
+	DataBases      DataBases             `yaml:"databases" mapstructure:"databases"`
+	Server         Server                `yaml:"server" mapstructure:"server"`
+	Logs           LogConfig             `yaml:"log" mapstructure:"log"`
+	RabbitMqConfig global.RabbitMqConfig `yaml:"rabbitMq" mapstructure:"rabbitMq"`
 }
 
 // NacosConfig 结构体 配置了连接Nacos的参数

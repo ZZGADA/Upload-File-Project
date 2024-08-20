@@ -5,6 +5,8 @@ import (
 	"UploadFileProject/src/entity/dto"
 	"UploadFileProject/src/global/enum"
 	"UploadFileProject/src/mapper"
+	"UploadFileProject/src/mq"
+	"encoding/json"
 	uuid "github.com/satori/go.uuid"
 	"net/http"
 	"path/filepath"
@@ -69,6 +71,21 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 		OssPath:          enum.OssPathDefault.ToString(),
 		IfUploadOss:      enum.NoneDeleted.ToInt32(),
 	})
+
+	// 创建消息
+	message := mq.NewMessage(&dto.UpLoadSingleFileOSSMqDTO{
+		OrganizationUuid: FuOrganizationBO.OrgUuid,
+		FileSuffix:       fileSuffix,
+		FileUuid:         fileUuidStr,
+		GroupId:          UpLoadsPath,
+	}, "UpLoadSingleFileOSSMqDTO", enum.TaskSingleFileUpload.ToInt64())
+
+	jsonData, err := json.Marshal(message)
+	if err != nil {
+		logService.Fatalf("Error occurred during marshaling. Error: %s", err.Error())
+	}
+	// 生产者发送
+	mq.Producer(jsonData)
 
 	resultStr = fileUuidStr
 	statusCode = http.StatusOK

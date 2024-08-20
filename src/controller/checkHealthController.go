@@ -13,9 +13,5 @@ func checkHealthController(router *gin.RouterGroup) {
 // checkHealth // 健康检测
 func checkHealth(c *gin.Context) {
 	result := resp.NewResult(c)
-
-	// 核心的业务代码
-	resultString := "health"
-
-	result.Success(&resultString)
+	result.Success("health")
 }

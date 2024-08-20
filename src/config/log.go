@@ -15,7 +15,7 @@ var (
 )
 
 // 初始化日志logrus
-func initLogConfig() {
+func initLog() {
 	LogAllConfig = &ProjectConfig.Logs
 
 	// 配置logrus

@@ -2,7 +2,9 @@ package config
 
 import (
 	"UploadFileProject/src/controller"
+	"UploadFileProject/src/global"
 	"UploadFileProject/src/mapper"
+	"UploadFileProject/src/mq"
 	"UploadFileProject/src/service"
 	"fmt"
 	"github.com/spf13/viper"
@@ -26,12 +28,13 @@ func LoadResource(configFile string) {
 	initNacosClient()
 	pullNacosBootStrapConfig()
 	initMySQLClient()
-	initLogConfig()
+	initLog()
 	initServer()
 
 	controller.InitController(Router)
 	service.InitService()
 	mapper.InitMapper()
+	mq.InitRabbitMyServer(&ProjectConfig.RabbitMqConfig)
 }
 
 // 读取资源文件
@@ -42,11 +45,11 @@ func readResourceFile(configFileName string) {
 		case "application":
 			readApplicationFile(fileConfig)
 		default:
-			log.Panic(fmt.Sprintf("sorry, this kind of file hasn't function to read"), configFileName)
+			global.Log.Panic(fmt.Sprintf("sorry, this kind of file hasn't function to read"), configFileName)
 		}
 
 	} else {
-		log.Panic("file name isn't completed")
+		global.Log.Panic("file name isn't completed")
 	}
 }
 
