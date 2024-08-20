@@ -1,17 +1,14 @@
 package service
 
 import (
-	"UploadFileProject/src/config"
+	"UploadFileProject/src/global"
 	"github.com/sirupsen/logrus"
-	"gorm.io/gorm"
 )
 
 var (
-	logService  *logrus.Logger
-	MySQLClient *gorm.DB
+	logService *logrus.Logger
 )
 
 func InitService() {
-	logService = config.Log
-	MySQLClient = config.MySQLClient
+	logService = global.Log
 }

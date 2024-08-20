@@ -1,10 +1,10 @@
 package config
 
 import (
+	"UploadFileProject/src/global"
 	"bytes"
 	"fmt"
 	"github.com/nacos-group/nacos-sdk-go/v2/clients"
-	"github.com/nacos-group/nacos-sdk-go/v2/clients/config_client"
 	"github.com/nacos-group/nacos-sdk-go/v2/clients/naming_client"
 	"github.com/nacos-group/nacos-sdk-go/v2/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/v2/vo"
@@ -14,9 +14,7 @@ import (
 )
 
 var (
-	NacosConfigClient   config_client.IConfigClient
-	NacosServicesClient naming_client.INamingClient
-	NacosServerConfig   = &NacosConfig{}
+	NacosServerConfig = &NacosConfig{}
 )
 
 // 初始化NacosClient 包括动态配置和服务发现
@@ -60,12 +58,12 @@ func initNacosClient() {
 
 	log.Printf("Nacos config client has been created ")
 
-	NacosConfigClient, NacosServicesClient = nacosConfigClient, nacosServicesClient
+	global.NacosConfigClient, global.NacosServicesClient = nacosConfigClient, nacosServicesClient
 }
 
 // 拉去nacos的动态配置文件
 func pullNacosBootStrapConfig() {
-	bootstrapDynamicConfig, err := NacosConfigClient.GetConfig(
+	bootstrapDynamicConfig, err := global.NacosConfigClient.GetConfig(
 		vo.ConfigParam{
 			Group:  ProjectConfig.NacosConfig.Bootstrap.Group,
 			DataId: ProjectConfig.NacosConfig.Bootstrap.DataId,
@@ -97,7 +95,7 @@ func registerServiceInstance(client naming_client.INamingClient, param vo.Regist
 
 func registerUploadFileService() {
 	//Register
-	registerServiceInstance(NacosServicesClient, vo.RegisterInstanceParam{
+	registerServiceInstance(global.NacosServicesClient, vo.RegisterInstanceParam{
 		Ip:          ServerAllConfig.IP,
 		Port:        ServerAllConfig.Port,
 		ServiceName: ServerAllConfig.Name,

@@ -23,3 +23,14 @@ type RabbitMQ struct {
 func NewRabbitMQ(queueName string, exchange string, key string) *RabbitMQ {
 	return &RabbitMQ{QueueName: queueName, Exchange: exchange, Key: key, Mqurl: MQURL}
 }
+
+func initRabbitMq() {
+
+}
+
+// Publish 发布消息.
+//func (ch *Channel) Publish(exchange, key string, body []byte) (err error) {
+//	_, err = ch.Channel.PublishWithDeferredConfirmWithContext(context.Background(), exchange, key, false, false,
+//		amqp.Publishing{ContentType: "text/plain", Body: body})
+//	return err
+//}

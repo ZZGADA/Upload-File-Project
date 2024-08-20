@@ -6,7 +6,7 @@ import (
 )
 
 // InitCheckHealthController 初始化接口配置
-func initCheckHealthController(router *gin.RouterGroup) {
+func checkHealthController(router *gin.RouterGroup) {
 	router.GET("", checkHealth) // 传入函数指针
 }
 

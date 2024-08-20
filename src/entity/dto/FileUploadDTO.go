@@ -6,7 +6,11 @@ import (
 )
 
 type FileUploadDTO struct {
-	OrganizationUuid any
+	OrganizationUuid string
 	File             *multipart.FileHeader
-	C                *gin.Context
+	Context          *gin.Context
+}
+
+func NewFileUploadDTO(file *multipart.FileHeader, organizationUuid string, context *gin.Context) *FileUploadDTO {
+	return &FileUploadDTO{File: file, OrganizationUuid: organizationUuid, Context: context}
 }

@@ -1,6 +1,9 @@
 package config
 
 import (
+	"UploadFileProject/src/controller"
+	"UploadFileProject/src/mapper"
+	"UploadFileProject/src/service"
 	"fmt"
 	"github.com/spf13/viper"
 	"log"
@@ -15,7 +18,7 @@ var ProjectConfig *Config = &Config{}
 
 // LoadResource /*加载配置文件资源*/
 func LoadResource(configFile string) {
-	// 定义一个延时函数 全部配置成功后启动
+	// 延时函数 全部配置成功后启动
 	defer func() {
 		registerUploadFileService()
 	}()
@@ -25,6 +28,10 @@ func LoadResource(configFile string) {
 	initMySQLClient()
 	initLogConfig()
 	initServer()
+
+	controller.InitController(Router)
+	service.InitService()
+	mapper.InitMapper()
 }
 
 // 读取资源文件

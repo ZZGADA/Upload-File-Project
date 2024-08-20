@@ -1,6 +1,7 @@
 package config
 
 import (
+	"UploadFileProject/src/global"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -8,7 +9,6 @@ import (
 	"time"
 )
 
-var MySQLClient *gorm.DB
 var MySQLAllConfig = &MySQLConfig{}
 
 // 初始化MySQLClient
@@ -40,5 +40,5 @@ func initMySQLClient() {
 	// SetConnMaxLifetime 设置了连接可复用的最大时间。
 	sqlDB.SetConnMaxLifetime(time.Hour)
 
-	MySQLClient = MySQLClientDB
+	global.MySQLClient = MySQLClientDB
 }

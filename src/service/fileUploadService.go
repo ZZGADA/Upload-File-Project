@@ -3,8 +3,8 @@ package service
 import (
 	"UploadFileProject/src/entity/bo"
 	"UploadFileProject/src/entity/dto"
+	"UploadFileProject/src/global/enum"
 	"UploadFileProject/src/mapper"
-	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"net/http"
 	"path/filepath"
@@ -44,15 +44,15 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 	fileSuffix := fileSlice[1]
 	fileSlice[0] = fileUuidStr
 
-	organizationUuid := fmt.Sprintf("%v", fileUploadDTO.OrganizationUuid)
+	organizationUuid := fileUploadDTO.OrganizationUuid
 	fileUuidAndSuffix := strings.Join(fileSlice, ".")
 
 	// 获取organization对象
-	FuOrganizationBO := mapper.FuOrganizationBOMapperImpl.SelectOrganization(organizationUuid)
+	FuOrganizationBO := mapper.FuOrganizationBOMapperImpl.SelectFuOrganization(organizationUuid)
 
 	// 拼接路径并将文件存入本地
 	savePath := filepath.Join(UpLoadsPath, FuOrganizationBO.OrgPath, fileSuffix, fileUuidAndSuffix)
-	if err := fileUploadDTO.C.SaveUploadedFile(fileUploadDTO.File, savePath); err != nil {
+	if err := fileUploadDTO.Context.SaveUploadedFile(fileUploadDTO.File, savePath); err != nil {
 		resultStr = "Unable to save the file"
 		statusCode = http.StatusInternalServerError
 		return
@@ -61,17 +61,16 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 	logService.Infof("file has been saved :%s", savePath)
 
 	// 将文件信息插入到表中
-	mapper.FuFileBOMapperImpl.InsertFile(&bo.FuFileBO{
+	mapper.FuFileBOMapperImpl.InsertFuFile(&bo.FuFileBO{
 		FileUuid:         fileUuidStr,
 		FileSuffix:       fileSuffix,
 		FileOriginalName: fileOriginalName,
 		OrgId:            FuOrganizationBO.Id,
-		OssPath:          "",
-		IfUploadOss:      0,
+		OssPath:          enum.OssPathDefault.ToString(),
+		IfUploadOss:      enum.NoneDeleted.ToInt32(),
 	})
 
 	resultStr = fileUuidStr
 	statusCode = http.StatusOK
-
 	return
 }
