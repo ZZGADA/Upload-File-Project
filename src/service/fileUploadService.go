@@ -69,7 +69,8 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 		FileOriginalName: fileOriginalName,
 		OrgId:            FuOrganizationBO.Id,
 		OssPath:          enum.OssPathDefault.ToString(),
-		IfUploadOss:      enum.NoneDeleted.ToInt32(),
+		IfUploadOss:      enum.NoneUploadOss.ToInt32(),
+		LocalGroup:       UpLoadsPath,
 	})
 
 	// 创建消息

@@ -38,7 +38,7 @@ type RabbitMQ struct {
 	ContentType string
 }
 
-func InitRabbitMyServer(mqConfig *global.RabbitMqConfig) {
+func InitRabbitMqServer(mqConfig *global.RabbitMqConfig) {
 	RabbitMqConfig = mqConfig
 	Url = fmt.Sprintf(UrlOrigin,
 		RabbitMqConfig.Username,

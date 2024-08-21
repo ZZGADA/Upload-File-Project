@@ -5,6 +5,7 @@ import (
 	"UploadFileProject/src/global"
 	"UploadFileProject/src/mapper"
 	"UploadFileProject/src/mq"
+	"UploadFileProject/src/oss"
 	"UploadFileProject/src/service"
 	"fmt"
 	"github.com/spf13/viper"
@@ -12,11 +13,12 @@ import (
 	"strings"
 )
 
+// ProjectConfig
 /*
-全局ProjectConfig 配置文件
-全局NacosClient  Nacos的动态配置中心
+ 全局ProjectConfig 配置文件
+ 全局NacosClient  Nacos的动态配置中心
 */
-var ProjectConfig *Config = &Config{}
+var ProjectConfig = &Config{}
 
 // LoadResource /*加载配置文件资源*/
 func LoadResource(configFile string) {
@@ -28,13 +30,17 @@ func LoadResource(configFile string) {
 	initNacosClient()
 	pullNacosBootStrapConfig()
 	initMySQLClient()
+	initossClient()
 	initLog()
 	initServer()
 
 	controller.InitController(Router)
 	service.InitService()
 	mapper.InitMapper()
-	mq.InitRabbitMyServer(&ProjectConfig.RabbitMqConfig)
+	mq.InitRabbitMqServer(&ProjectConfig.RabbitMqConfig)
+	oss.InitOssServer()
+
+	go mq.Consumer()
 }
 
 // 读取资源文件

@@ -10,7 +10,7 @@ import (
 func Consumer() {
 	// 初始化mq
 	mq := rabbitMqClient
-	defer mq.ReleaseRes() // 完成任务释放资源
+	//defer mq.ReleaseRes() // 完成任务释放资源
 
 	if closed := CheckRabbitClosed(mq.Channel); closed == 1 {
 		// channel 已关闭，重连一下
@@ -59,12 +59,6 @@ func Consumer() {
 	for {
 		select {
 		case message := <-msgChannel:
-			defer func() {
-				if errA := message.Ack(true); errA != nil {
-					LogMq.Error("mq ack error")
-				}
-			}()
-
 			if closed := CheckRabbitClosed(mq.Channel); closed == 1 {
 				ReInitChannel()
 			}
@@ -82,7 +76,11 @@ func Consumer() {
 				fileSingleLoad, _ := obj.(*dto.UpLoadSingleFileOSSMqDTO)
 				service.UploadFileOssServiceImpl.UploadSingleFileOSS(fileSingleLoad)
 			}
-			LogMq.Infof("message is %#v", obj)
+
+			if errA := message.Ack(true); errA != nil {
+				LogMq.Error("mq ack error")
+			}
+			LogMq.Infof("mq ack success!!,message id is %#v", message.MessageId)
 		}
 
 	}

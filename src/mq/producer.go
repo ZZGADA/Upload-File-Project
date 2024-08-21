@@ -1,6 +1,7 @@
 package mq
 
 import (
+	uuid "github.com/satori/go.uuid"
 	"github.com/streadway/amqp"
 )
 
@@ -68,8 +69,9 @@ func Producer(message []byte) {
 		false,         // 是否返回消息(匹配队列)，如果为true, 会根据binding规则匹配queue，如未匹配queue，则把发送的消息返回给发送者
 		false,         // 是否返回消息(匹配消费者)，如果为true, 消息发送到queue后发现没有绑定消费者，则把发送的消息返回给发送者
 		amqp.Publishing{ // 发送的消息，固定有消息体和一些额外的消息头，包中提供了封装对象
-			ContentType: "text/plain", // 消息内容的类型
-			Body:        message,      // 消息内容
+			ContentType: "text/plain",          // 消息内容的类型
+			Body:        message,               // 消息内容
+			MessageId:   uuid.NewV1().String(), //设置messageId  可以根据id进行幂等校验
 		},
 	)
 	if err != nil {

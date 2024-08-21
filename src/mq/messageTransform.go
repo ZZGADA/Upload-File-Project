@@ -44,35 +44,3 @@ func transformMessage(msgData []byte) (interface{}, *dto.Message, error) {
 
 	return obj, mqMessage, err
 }
-
-// 示例结构体
-type Person struct {
-	Name string
-	Age  int
-}
-
-// main 测试样例
-func main() {
-	// 注册类型
-
-	// 模拟接收到的消息
-	typeName := "Person"
-	jsonData := `{"Name": "Alice", "Age": 30}`
-
-	// 根据类型名称创建对象
-	obj, err := createObjectByName(typeName)
-	if err != nil {
-		fmt.Println("Error creating object:", err)
-		return
-	}
-
-	// 反序列化 JSON 数据到创建的对象
-	err = json.Unmarshal([]byte(jsonData), obj)
-	if err != nil {
-		fmt.Println("Error unmarshalling JSON:", err)
-		return
-	}
-
-	// 打印结果
-	fmt.Printf("Unmarshalled object: %+v\n", obj)
-}
