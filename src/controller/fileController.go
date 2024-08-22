@@ -31,7 +31,6 @@ func deleteFile(context *gin.Context) {
 	var fileDeleteDTO = &dto.FileDeleteDTO{FileUuid: fileUuid}
 
 	service.FileServiceImpl.DeleteFile(fileDeleteDTO, result)
-
 }
 
 func updateFileName(context *gin.Context) {

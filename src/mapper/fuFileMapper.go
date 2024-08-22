@@ -93,6 +93,7 @@ func (mapper *fuFileBOMapper) GetBatchFileInformation(fileUuidList []string) []d
 			"ff.file_suffix as fileSuffix,"+
 			"ff.file_uuid as fileUuid,"+
 			"fo.org_name as orgName,"+
+			"fo.org_uuid as orgUuid,"+
 			"ff.local_group as localGroup,"+
 			"ff.if_upload_oss as ifUploadOss,"+
 			"ff.oss_path as ossPath,"+

@@ -7,6 +7,7 @@ import (
 	"UploadFileProject/src/mq"
 	"UploadFileProject/src/oss"
 	"UploadFileProject/src/service"
+	"UploadFileProject/src/timingTask"
 	"fmt"
 	"github.com/spf13/viper"
 	"log"
@@ -31,14 +32,18 @@ func LoadResource(configFile string) {
 	pullNacosBootStrapConfig()
 	initMySQLClient()
 	initossClient()
+	//initESClient()
 	initLog()
 	initServer()
 
+	// 启动对应服务和客户端
 	controller.InitController(Router)
 	service.InitService()
 	mapper.InitMapper()
 	mq.InitRabbitMqServer(&ProjectConfig.RabbitMqConfig)
+	//es.InitElasticSearch()
 	oss.InitOssServer()
+	timingTask.InitTimingTask()
 
 	go mq.Consumer()
 }

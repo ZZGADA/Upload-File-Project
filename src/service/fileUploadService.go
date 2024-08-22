@@ -3,32 +3,95 @@ package service
 import (
 	"UploadFileProject/src/entity/bo"
 	"UploadFileProject/src/entity/dto"
+	"UploadFileProject/src/entity/vo"
+	"UploadFileProject/src/global"
 	"UploadFileProject/src/global/enum"
 	"UploadFileProject/src/mapper"
 	"UploadFileProject/src/mq"
+	"UploadFileProject/src/utils/resp"
 	"encoding/json"
+	"github.com/gin-gonic/gin"
 	uuid "github.com/satori/go.uuid"
+	"mime/multipart"
 	"net/http"
 	"path/filepath"
 	"strings"
+	"sync"
 )
-
-const UpLoadsPath = "uploads"
 
 type FileUploadService struct {
 }
 
 var FileUploadServiceImpl = &FileUploadService{}
 
+// UploadMultiFileService 多任务上传
+func (fileUpload *FileUploadService) UploadMultiFileService(files []*multipart.FileHeader, context *gin.Context, result *resp.Result, orgUuid string) {
+	successChan := make(chan string, len(files))
+	failChan := make(chan string, len(files))
+	var wg sync.WaitGroup
+	var fileProcess = len(files)
+
+	for _, file := range files {
+		wg.Add(1)
+		go func(f *multipart.FileHeader) {
+			defer wg.Done()
+			fileUploadDTO := &dto.FileUploadDTO{
+				OrganizationUuid: orgUuid,
+				File:             f,
+				Context:          context,
+			}
+			resultStr, resultCode := fileUpload.saveFile(fileUploadDTO)
+			if resultCode != http.StatusOK {
+				failChan <- resultStr
+			} else {
+				successChan <- resultStr
+			}
+		}(file)
+	}
+
+	var failedFilesUuid = make([]string, 0, len(files)*10)
+	var successFilesUuid = make([]string, 0, len(files)*10)
+
+	// 处理成功和失败的文件
+	for {
+		select {
+		case successFile, ok := <-successChan:
+			if ok {
+				logService.Infof("Successfully uploaded: %s\n", successFile)
+				successFilesUuid = append(successFilesUuid, successFile)
+				fileProcess--
+			}
+		case failFile, ok := <-failChan:
+			if ok {
+				logService.Error("Failed to upload: %s\n", failFile)
+				failedFilesUuid = append(failedFilesUuid, failFile)
+				fileProcess--
+			}
+		}
+		// 兜底
+		if len(successChan) == 0 && len(failChan) == 0 && fileProcess == 0 {
+			break
+		}
+	}
+	result.Success(vo.FileMultiUploadVO{
+		SuccessFilesUuid: successFilesUuid,
+		FailedFilesUuid:  failedFilesUuid,
+	})
+	close(successChan)
+	close(failChan)
+	logService.Info("channel 资源释放")
+	return
+}
+
 // UploadSingleFileService 将前端文件存入本地
 func (fileUpload *FileUploadService) UploadSingleFileService(fileUploadDTO *dto.FileUploadDTO) (resultStr interface{}, statusCode int) {
 	// 检查文件类型是否为PDF
-	logService.Infof("file name is %s", fileUploadDTO.File.Filename)
-	if filepath.Ext(fileUploadDTO.File.Filename) != ".pdf" {
-		resultStr = "Only PDF files are allowed"
-		statusCode = http.StatusBadRequest
-		return
-	}
+	//logService.Infof("file name is %s", fileUploadDTO.File.Filename)
+	//if filepath.Ext(fileUploadDTO.File.Filename) != ".pdf" {
+	//	resultStr = "Only PDF files are allowed"
+	//	statusCode = http.StatusBadRequest
+	//	return
+	//}
 
 	resultStr, statusCode = fileUpload.saveFile(fileUploadDTO)
 	return
@@ -53,9 +116,9 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 	FuOrganizationBO := mapper.FuOrganizationBOMapperImpl.SelectFuOrganization(organizationUuid)
 
 	// 拼接路径并将文件存入本地
-	savePath := filepath.Join(UpLoadsPath, FuOrganizationBO.OrgPath, fileSuffix, fileUuidAndSuffix)
+	savePath := filepath.Join(global.UpLoadsPath, FuOrganizationBO.OrgPath, fileSuffix, fileUuidAndSuffix)
 	if err := fileUploadDTO.Context.SaveUploadedFile(fileUploadDTO.File, savePath); err != nil {
-		resultStr = "Unable to save the file"
+		resultStr = fileUuidStr
 		statusCode = http.StatusInternalServerError
 		return
 	}
@@ -70,7 +133,7 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 		OrgId:            FuOrganizationBO.Id,
 		OssPath:          enum.OssPathDefault.ToString(),
 		IfUploadOss:      enum.NoneUploadOss.ToInt32(),
-		LocalGroup:       UpLoadsPath,
+		LocalGroup:       global.UpLoadsPath,
 	})
 
 	// 创建消息
@@ -78,12 +141,14 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 		OrganizationUuid: FuOrganizationBO.OrgUuid,
 		FileSuffix:       fileSuffix,
 		FileUuid:         fileUuidStr,
-		GroupId:          UpLoadsPath,
+		GroupId:          global.UpLoadsPath,
 	}, "UpLoadSingleFileOSSMqDTO", enum.TaskSingleFileUpload.ToInt64())
 
 	jsonData, err := json.Marshal(message)
 	if err != nil {
 		logService.Fatalf("Error occurred during marshaling. Error: %s", err.Error())
+		resultStr = fileUuidStr
+		statusCode = http.StatusInternalServerError
 	}
 	// 生产者发送
 	mq.Producer(jsonData)

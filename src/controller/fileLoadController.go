@@ -14,6 +14,7 @@ import (
 
 func fileLoadController(router *gin.RouterGroup) {
 	router.POST("/uploadSingle", middleWare.SingleFileInterceptor(), fileSingleUpload)
+	router.POST("/uploadMulti", middleWare.MultiFileInterceptor(), fileMultiUpload)
 	router.POST("/downloadSingle", downloadOneFile)
 	router.POST("/downloadBatch", downLoadBatchFile)
 }
@@ -62,4 +63,27 @@ func fileSingleUpload(c *gin.Context) {
 		return
 	}
 	result.Success(&resultData)
+}
+
+func fileMultiUpload(c *gin.Context) {
+	result := resp.NewResult(c)
+
+	// 获取请求头信息
+	organizationUuid, _ := c.Get(global.Organization)
+	organizationUuidStr := fmt.Sprintf("%v", organizationUuid)
+
+	// 核心的业务代码
+	form, _ := c.MultipartForm()
+	files := form.File[global.MultiFileName]
+
+	service.FileUploadServiceImpl.UploadMultiFileService(files, c, result, organizationUuidStr)
+	return
+
+	//resultData, statusCode := service.FileUploadServiceImpl.UploadSingleFileService(fileUploadDTO)
+	//
+	//if statusCode != http.StatusOK {
+	//	logController.Warnf("fileSingleUpload failed, please checking，msg：%v ", resultData)
+	//	result.Failed(statusCode, resultData)
+	//	return
+	//}
 }

@@ -24,3 +24,21 @@ func SingleFileInterceptor() gin.HandlerFunc {
 		context.Next()
 	}
 }
+
+func MultiFileInterceptor() gin.HandlerFunc {
+	return func(context *gin.Context) {
+		form, _ := context.MultipartForm()
+		if len(form.File) == 0 {
+			context.AbortWithStatusJSON(
+				http.StatusBadRequest,
+				resp.NewResultCont(
+					http.StatusBadRequest,
+					"error , didn't get any file,please upload at least single file",
+					"",
+				))
+			return
+		}
+
+		context.Next()
+	}
+}

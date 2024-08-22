@@ -71,7 +71,7 @@ func (fileSearchService *fileSearchService) GetFileInfoList(listDTO *dto.FileInf
 
 	// 保存 Excel 文件
 	filaPathExcel := filepath.Join(ExcelPath, organizationUuidStr, process.FileNameJoinSuffix(uuid.NewV1().String(), "xlsx"))
-	checkFileDirExist(filaPathExcel)
+	process.CheckFileDirExist(filaPathExcel)
 	if err := f.SaveAs(filaPathExcel); err != nil {
 		fmt.Println(err)
 	}
@@ -99,7 +99,7 @@ func (fileSearchService *fileSearchService) DeleteFile(deleteDTO *dto.FileDelete
 
 	if fuFileObj.IfUploadOss == enum.UploadOss.ToInt32() {
 		// 如果上传了OSS 就删除OSS  也要查看本地文件是否存在，如果存在表示上传了OSS但是删除的定时任务还没执行
-		if checkFileExist(localFilePath) {
+		if process.CheckFileExist(localFilePath) {
 			if err := os.Remove(localFilePath); err != nil {
 				logService.Errorf("本地文件删除错误，%#v", err)
 			}
@@ -109,6 +109,7 @@ func (fileSearchService *fileSearchService) DeleteFile(deleteDTO *dto.FileDelete
 
 	} else {
 		// 如果没有上传OSS，表示文件刚刚上传到系统，异步上传OSS还没有执行
+		// TODO: 发送消息进入mq 然后消费者消费 如果消费的时候OSS文件仍然没有上传 就重新入队 等待消费 否则直接删除OSS
 	}
 
 	mapper.FuFileBOMapperImpl.DeleteFile(deleteDTO.FileUuid)
@@ -178,29 +179,4 @@ func (fileSearchService *fileSearchService) GetFileList(fileSearchDTO *dto.FileS
 		fileSearchItem)
 
 	result.Success(resultVO)
-}
-
-// checkFileExist  检查文件是否存在
-func checkFileExist(filePath string) bool {
-	if _, err := os.Stat(filePath); os.IsNotExist(err) {
-		// 如果有err 表示文件不存在
-		return false
-	}
-	// 否则表示文件存在
-	return true
-}
-
-func checkFileDirExist(filePath string) {
-	dirPath := filepath.Dir(filePath)
-	// 检查文件是否存在
-	if _, err := os.Stat(filePath); os.IsNotExist(err) {
-		// 如果文件不存在，检查文件夹是否存在
-		if _, err := os.Stat(dirPath); os.IsNotExist(err) {
-			// 如果文件夹不存在，则创建文件夹
-			if err := os.MkdirAll(dirPath, os.ModePerm); err != nil {
-				logService.Error(err)
-				return
-			}
-		}
-	}
 }

@@ -4,6 +4,7 @@ import (
 	"UploadFileProject/src/entity/bo"
 	"UploadFileProject/src/entity/dto"
 	"UploadFileProject/src/entity/vo"
+	"UploadFileProject/src/global"
 	"UploadFileProject/src/global/enum"
 	"UploadFileProject/src/mapper"
 	"UploadFileProject/src/oss"
@@ -20,8 +21,6 @@ import (
 type FileDownloadService struct{}
 
 var FileDownloadServiceImpl = &FileDownloadService{}
-
-const DownLoadsPath = "downloads"
 
 // DownloadSingleFile 单文件下载
 func (fileDownloadService *FileDownloadService) DownloadSingleFile(fileDownloadDTO *dto.FileDownloadDTO, result *resp.Result) {
@@ -48,7 +47,6 @@ func (fileDownloadService *FileDownloadService) DownloadBatchFile(
 	}
 
 	fileList := mapper.FuFileBOMapperImpl.GetBatchFileInformation(fileUuidList)
-	fmt.Println(fileList)
 	ch := make(chan string, len(fileList))
 	var wg sync.WaitGroup
 
@@ -90,13 +88,13 @@ func (fileDownloadService *FileDownloadService) download(fuFileBO *bo.FuFileBO, 
 	fileName := process.FileNameJoinSuffix(fuFileBO.FileUuid, fuFileBO.FileSuffix)
 
 	localDownloadPath := filepath.Join(
-		DownLoadsPath,
+		global.DownLoadsPath,
 		orgUuid,
 		fuFileBO.FileSuffix,
 		fileName)
 
 	localUploadPath := filepath.Join(
-		UpLoadsPath,
+		global.UpLoadsPath,
 		orgUuid,
 		fuFileBO.FileSuffix,
 		fileName)
@@ -110,7 +108,7 @@ func (fileDownloadService *FileDownloadService) download(fuFileBO *bo.FuFileBO, 
 		// 如果成功上传了OSS就从OSS获取对象
 		// 优先查询本地是否有已经下载的对象 ， 如果有就直接读本地 否则从还是要从OSS下载
 		fileDownloadVO.FileData = localDownloadPath
-		if fileExists(localDownloadPath) {
+		if process.FileExists(localDownloadPath) {
 			logService.Info("本地有下载缓存，直接从本地下载")
 			//readFileContext(localDownloadPath, result.Ctx)
 			return fileDownloadVO
@@ -126,15 +124,6 @@ func (fileDownloadService *FileDownloadService) download(fuFileBO *bo.FuFileBO, 
 		fileDownloadVO.FileData = localUploadPath
 		return fileDownloadVO
 	}
-}
-
-// fileExists // 判断file是否存在 如果存在返回true
-func fileExists(filename string) bool {
-	_, err := os.Stat(filename)
-	if os.IsNotExist(err) {
-		return false
-	}
-	return err == nil
 }
 
 // readFile 读文件
