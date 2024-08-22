@@ -41,6 +41,17 @@ func (result *Result) Success(data interface{}) {
 	result.Ctx.JSON(http.StatusOK, res)
 }
 
+func (result *Result) SuccessMsg(msg string, data interface{}) {
+	if data == nil {
+		data = gin.H{}
+	}
+	res := NewResultContEmpty()
+	res.Code = 200
+	res.Msg = msg
+	res.Data = data
+	result.Ctx.JSON(http.StatusOK, res)
+}
+
 // Success
 func (result *Result) Failed(statusCode int, data interface{}) {
 	if data == nil {

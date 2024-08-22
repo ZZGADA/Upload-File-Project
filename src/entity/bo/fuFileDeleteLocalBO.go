@@ -2,7 +2,7 @@ package bo
 
 import "time"
 
-type FuFileDeleteLocal struct {
+type FuFileDeleteLocalBO struct {
 	Id             int64     `gorm:"column:id;type:bigint;comment:id;primaryKey;" json:"id"`                                               // id
 	FileDeleteUuid string    `gorm:"column:file_delete_uuid;type:varchar(64);comment:删除文件记录唯一id;not null;" json:"file_delete_uuid"`        // 删除文件记录唯一id
 	CreateTime     time.Time `gorm:"column:create_time;type:datetime;comment:创建时间;not null;default:CURRENT_TIMESTAMP;" json:"create_time"` // 创建时间

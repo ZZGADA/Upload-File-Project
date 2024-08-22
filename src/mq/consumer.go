@@ -65,6 +65,10 @@ func Consumer() {
 
 			// 消息消费的处理中心
 			msgData := message.Body
+			if len(msgData) == 0 {
+				// 兜底 如果防止channel一直开启 接受信息报错
+				continue
+			}
 			obj, messageData, errT := transformMessage(msgData)
 			if errT != nil {
 				LogMq.Errorf("message 对象转换失败，%#v", errT)

@@ -22,6 +22,3 @@ type FuFileBO struct {
 func (FuFileBO) TableName() string {
 	return "fu_file"
 }
-
-type FuFile struct {
-}

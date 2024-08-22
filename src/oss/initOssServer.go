@@ -23,6 +23,6 @@ func InitOssServer() {
 
 // HandleError 异常处理
 func HandleError(err error) {
-	logOss.Error("Error:", err)
+	logOss.Error("OSS Error:", err)
 	os.Exit(-1)
 }

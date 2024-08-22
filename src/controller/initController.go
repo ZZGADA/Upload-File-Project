@@ -26,11 +26,13 @@ func checkHealthRouterGroup(router *gin.Engine) {
 
 // fileUploadRouterGroup 文件上传路由组
 func fileUploadRouterGroup(router *gin.Engine) {
-	fileUploadGroup := router.Group("/uploadFile")
+	fileUploadGroup := router.Group("/file")
 	{
 		// 路由组初始化配置
 		fileUploadGroup.Use(middleWare.HeaderInterceptor())
 
-		fileSingleUploadController(fileUploadGroup)
+		// 从上往下：上传下载controller、文件查询controller
+		fileLoadController(fileUploadGroup)
+		fileController(fileUploadGroup)
 	}
 }
