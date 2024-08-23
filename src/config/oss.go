@@ -10,7 +10,7 @@ import (
 
 const EndPoint = "https://oss-cn-beijing.aliyuncs.com"
 
-func initossClient() {
+func initOssClient() {
 
 	// 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。
 	provider, err := oss.NewEnvironmentVariableCredentialsProvider()

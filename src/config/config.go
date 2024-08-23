@@ -31,7 +31,7 @@ func LoadResource(configFile string) {
 	initNacosClient()
 	pullNacosBootStrapConfig()
 	initMySQLClient()
-	initossClient()
+	initOssClient()
 	//initESClient()
 	initLog()
 	initServer()

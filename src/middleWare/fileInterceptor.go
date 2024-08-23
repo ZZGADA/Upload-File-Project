@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// SingleFileInterceptor 单文件上传拦截器
 func SingleFileInterceptor() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		_, err := context.FormFile(global.SingleFileName)
@@ -20,11 +21,11 @@ func SingleFileInterceptor() gin.HandlerFunc {
 				))
 			return
 		}
-
 		context.Next()
 	}
 }
 
+// MultiFileInterceptor 多文件上传拦截器
 func MultiFileInterceptor() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		form, _ := context.MultipartForm()

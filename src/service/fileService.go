@@ -41,7 +41,7 @@ func (fileSearchService *fileSearchService) GetFileInfoList(listDTO *dto.FileInf
 	index, _ := f.NewSheet(sheetName)
 
 	// 设置表头
-	headers := []string{"FileName", "FileSuffix", "FileUuid", "OrgName", "LocalGroup", "IfUploadOss", "OssPath", "OssBucket", "CreateTime", "UpdateTime"}
+	headers := []string{"文件名", "文件名后缀", "文件uuid", "所属组织名称", "上传地址", "是否长传OSS", "OSS路径", "OSS bucket", "创建时间", "更新时间"}
 	for i, header := range headers {
 		cell := fmt.Sprintf("%s1", string(rune('A'+i)))
 		err := f.SetCellValue(sheetName, cell, header)
@@ -53,8 +53,9 @@ func (fileSearchService *fileSearchService) GetFileInfoList(listDTO *dto.FileInf
 	// 插入数据
 	for i, record := range fileList {
 		var _ error
+		var fileName = process.FileNameJoinSuffix(record.FileName, record.FileSuffix)
 		row := i + 2 // 从第二行开始插入数据
-		_ = f.SetCellValue(sheetName, fmt.Sprintf("A%d", row), record.FileName)
+		_ = f.SetCellValue(sheetName, fmt.Sprintf("A%d", row), fileName)
 		_ = f.SetCellValue(sheetName, fmt.Sprintf("B%d", row), record.FileSuffix)
 		_ = f.SetCellValue(sheetName, fmt.Sprintf("C%d", row), record.FileUuid)
 		_ = f.SetCellValue(sheetName, fmt.Sprintf("D%d", row), record.OrgName)
@@ -104,12 +105,16 @@ func (fileSearchService *fileSearchService) DeleteFile(deleteDTO *dto.FileDelete
 				logService.Errorf("本地文件删除错误，%#v", err)
 			}
 		}
+
 		// 直接删除OSS
+		// 下载缓存区不需要删除 获取文件接口只读未删除文件
 		oss.OssServerImpl.DeleteSingleFile(ossFilePath)
 
 	} else {
 		// 如果没有上传OSS，表示文件刚刚上传到系统，异步上传OSS还没有执行
 		// TODO: 发送消息进入mq 然后消费者消费 如果消费的时候OSS文件仍然没有上传 就重新入队 等待消费 否则直接删除OSS
+		result.Success("网络繁忙，请稍后重试哦")
+		return
 	}
 
 	mapper.FuFileBOMapperImpl.DeleteFile(deleteDTO.FileUuid)
@@ -140,26 +145,30 @@ func (fileSearchService *fileSearchService) GetFileList(fileSearchDTO *dto.FileS
 		pageCurrent = 1
 	}
 
-	fuFiles := mapper.FuFileBOMapperImpl.PageQuery(
-		fileSearchItem,
-		pageCurrent,
-		pageSize,
-	)
-
 	var fuFilesVO []dto.FileListDTO
-
-	for _, val := range fuFiles {
-		fuFilesVO = append(fuFilesVO,
-			dto.FileListDTO{
-				FileName:   val.FileOriginalName,
-				FileUuid:   val.FileUuid,
-				FileSuffix: val.FileSuffix,
-				UpdateTime: val.UpdateTime,
-			})
-	}
-
+	limitStart := pageSize * (pageCurrent - 1)
 	rowsTotal := int(mapper.FuFileBOMapperImpl.QueryAllData(fileSearchItem))
 	pageTotal := int(math.Ceil(float64(rowsTotal) / float64(pageSize)))
+
+	// 如果当前页大于最大页 就直接返回
+	if pageCurrent <= pageTotal {
+		fuFiles := mapper.FuFileBOMapperImpl.PageQuery(
+			fileSearchItem,
+			pageSize,
+			limitStart,
+		)
+		for _, val := range fuFiles {
+			fuFilesVO = append(fuFilesVO,
+				dto.FileListDTO{
+					FileName:   val.FileOriginalName,
+					FileUuid:   val.FileUuid,
+					FileSuffix: val.FileSuffix,
+					UpdateTime: val.UpdateTime,
+				})
+		}
+	} else {
+		fuFilesVO = make([]dto.FileListDTO, 0)
+	}
 
 	resultVO := vo.FileListVO{
 		FileSearchDTO: dto.FileSearchDTO{

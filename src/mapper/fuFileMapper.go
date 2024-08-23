@@ -10,9 +10,10 @@ import (
 
 type fuFileBOMapper struct{}
 
+// FuFileBOMapperImpl 对外暴露mapper服务
 var FuFileBOMapperImpl = &fuFileBOMapper{}
 
-// 查询组织
+// InsertFuFile 插入文件
 func (mapper *fuFileBOMapper) InsertFuFile(fuFileBO *bo.FuFileBO) int64 {
 	result := mysqlClient.Create(fuFileBO)
 	if result.Error != nil {
@@ -57,9 +58,8 @@ func (mapper *fuFileBOMapper) GetOneFileOrg(fileUuid string) *bo.FuFileBO {
 
 // PageQuery 分页查询
 func (mapper *fuFileBOMapper) PageQuery(fileSearchItem string,
-	pageCurrent int,
-	pageSize int) []bo.FuFileBO {
-	limitStart := pageSize * (pageCurrent - 1)
+	pageSize int,
+	limitStart int) []bo.FuFileBO {
 
 	var fuFiles []bo.FuFileBO
 	mysqlClient.Model(&bo.FuFileBO{}).Select("file_uuid", "file_original_name", "file_suffix", "update_time").

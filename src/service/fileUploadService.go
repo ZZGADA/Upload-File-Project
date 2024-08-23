@@ -77,6 +77,8 @@ func (fileUpload *FileUploadService) UploadMultiFileService(files []*multipart.F
 		SuccessFilesUuid: successFilesUuid,
 		FailedFilesUuid:  failedFilesUuid,
 	})
+
+	wg.Wait()
 	close(successChan)
 	close(failChan)
 	logService.Info("channel 资源释放")
