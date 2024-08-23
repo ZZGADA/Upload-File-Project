@@ -6,4 +6,12 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-/bin/
+../bin
+../logs
+../cache
+../go.mod
+../go.sum
+../uploads
+../downloads
+../excel
+./

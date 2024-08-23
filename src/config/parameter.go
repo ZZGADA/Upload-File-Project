@@ -1,11 +1,14 @@
 package config
 
+import "UploadFileProject/src/global"
+
 // Config 读取application.yaml 文件的配置类
 type Config struct {
-	NacosConfig NacosConfig `yaml:"nacos" mapstructure:"nacos"`
-	//NacosBootstrapConfig NacosBootstrapConfig
-	DataBases DataBases `yaml:"databases" mapstructure:"databases"`
-	Server    Server    `yaml:"server" mapstructure:"server"`
+	NacosConfig    NacosConfig           `yaml:"nacos" mapstructure:"nacos"`
+	DataBases      DataBases             `yaml:"databases" mapstructure:"databases"`
+	Server         Server                `yaml:"server" mapstructure:"server"`
+	Logs           LogConfig             `yaml:"log" mapstructure:"log"`
+	RabbitMqConfig global.RabbitMqConfig `yaml:"rabbitMq" mapstructure:"rabbitMq"`
 }
 
 // NacosConfig 结构体 配置了连接Nacos的参数
@@ -34,7 +37,11 @@ type BootStrap struct {
 }
 
 type Server struct {
-	Port int32 `yaml:"port" mapstructure:"port"`
+	IP     string `yaml:"ip" mapstructure:"ip"`
+	Port   uint64 `yaml:"port" mapstructure:"port"`
+	Name   string `yaml:"name" mapstructure:"name"`
+	Group  string `yaml:"group" mapstructure:"group"`
+	GinMod string `yaml:"ginMod" mapstructure:"ginMod"`
 }
 type DataBases struct {
 	Mysql MySQLConfig `yaml:"mysql" mapstructure:"mysql"`
@@ -51,4 +58,11 @@ type MySQLConfig struct {
 	Ip       string `yaml:"ip" mapstructure:"ip"`
 	Port     int32  `yaml:"port" mapstructure:"port"`
 	Database string `yaml:"database" mapstructure:"database"`
+}
+
+type LogConfig struct {
+	Dir        string `yaml:"dir"  mapstructure:"dir"`
+	Level      string `yaml:"level" mapstructure:"level"`
+	DayFormat  string `yaml:"dayFormat" mapstructure:"dayFormat"`
+	TimeFormat string `yaml:"timeFormat" mapstructure:"timeFormat"`
 }
