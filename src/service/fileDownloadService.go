@@ -10,10 +10,7 @@ import (
 	"UploadFileProject/src/oss"
 	"UploadFileProject/src/utils/process"
 	"UploadFileProject/src/utils/resp"
-	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"os"
 	"path/filepath"
 	"sync"
 )
@@ -28,10 +25,12 @@ func (fileDownloadService *FileDownloadService) DownloadSingleFile(fileDownloadD
 	fileUuid := fileDownloadDTO.FileUuid
 
 	fuFileBO := mapper.FuFileBOMapperImpl.GetOneFile(fileUuid)
-
-	resData := FileDownloadServiceImpl.download(fuFileBO, orgUuid, fileUuid)
-	result.Success(resData)
-
+	if fuFileBO.Id != 0 {
+		resData := FileDownloadServiceImpl.download(fuFileBO, orgUuid, fileUuid)
+		result.Success(resData)
+	} else {
+		result.Success("file is empty ")
+	}
 	return
 }
 
@@ -80,6 +79,8 @@ func (fileDownloadService *FileDownloadService) DownloadBatchFile(
 		fmt.Println("Received:", message)
 		fileBatchDownloadVo.FilesPath = append(fileBatchDownloadVo.FilesPath, message)
 	}
+	//wg.Wait()
+	//close(ch)
 	result.Success(fileBatchDownloadVo)
 }
 
@@ -126,13 +127,12 @@ func (fileDownloadService *FileDownloadService) download(fuFileBO *bo.FuFileBO, 
 	}
 }
 
-// readFile 读文件
 /*
 // if err := readFile(localUploadPath, &fileDownloadVO.FileData); err != nil {
 //	 result.Failed(http.StatusInternalServerError, err)
 // }
 // fileDownloadDTO.Context.File(localDownloadPath)
-*/
+
 func readFile(path string, fileData *interface{}) error {
 	fileContent, err := os.ReadFile(path)
 	if err != nil {
@@ -147,3 +147,4 @@ func readFile(path string, fileData *interface{}) error {
 func readFileContext(path string, context *gin.Context) {
 	context.File(path)
 }
+*/

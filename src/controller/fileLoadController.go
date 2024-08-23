@@ -63,6 +63,7 @@ func fileSingleUpload(c *gin.Context) {
 		return
 	}
 	result.Success(&resultData)
+	return
 }
 
 func fileMultiUpload(c *gin.Context) {
@@ -75,15 +76,8 @@ func fileMultiUpload(c *gin.Context) {
 	// 核心的业务代码
 	form, _ := c.MultipartForm()
 	files := form.File[global.MultiFileName]
+	fmt.Println(files)
 
 	service.FileUploadServiceImpl.UploadMultiFileService(files, c, result, organizationUuidStr)
 	return
-
-	//resultData, statusCode := service.FileUploadServiceImpl.UploadSingleFileService(fileUploadDTO)
-	//
-	//if statusCode != http.StatusOK {
-	//	logController.Warnf("fileSingleUpload failed, please checking，msg：%v ", resultData)
-	//	result.Failed(statusCode, resultData)
-	//	return
-	//}
 }

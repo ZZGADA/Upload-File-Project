@@ -29,9 +29,9 @@ func fileUploadRouterGroup(router *gin.Engine) {
 	fileUploadGroup := router.Group("/file")
 	{
 		// 路由组初始化配置
+		// 从上往下：上传下载controller、文件查询controller
 		fileUploadGroup.Use(middleWare.HeaderInterceptor())
 
-		// 从上往下：上传下载controller、文件查询controller
 		fileLoadController(fileUploadGroup)
 		fileController(fileUploadGroup)
 	}

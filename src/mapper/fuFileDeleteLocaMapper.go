@@ -10,9 +10,10 @@ import (
 type fuFileDeleteLocalMapper struct {
 }
 
+// FuFileDeleteLocalMapperImpl 对外暴露mapper服务
 var FuFileDeleteLocalMapperImpl = &fuFileDeleteLocalMapper{}
 
-// CreateFuOrganization //创建组织
+// CreateFuFileDeleteLocal 创建组织
 func (mapper *fuFileDeleteLocalMapper) CreateFuFileDeleteLocal(localBO *bo.FuFileDeleteLocalBO) {
 	result := mysqlClient.Create(localBO)
 	if result.Error != nil {
@@ -20,7 +21,7 @@ func (mapper *fuFileDeleteLocalMapper) CreateFuFileDeleteLocal(localBO *bo.FuFil
 	}
 }
 
-// SelectUploadFileNotDelete // 查询上传文件没有删除的
+// SelectUploadFileNotDelete  查询上传文件没有删除的
 func (mapper *fuFileDeleteLocalMapper) SelectUploadFileNotDelete() []bo.FuFileDeleteLocalBO {
 	var result = []bo.FuFileDeleteLocalBO{}
 	mysqlClient.Model(&bo.FuFileDeleteLocalBO{}).
@@ -28,6 +29,7 @@ func (mapper *fuFileDeleteLocalMapper) SelectUploadFileNotDelete() []bo.FuFileDe
 	return result
 }
 
+// UpdateUploadFileDeletedStatue 更新删除本地文件状态
 func (mapper *fuFileDeleteLocalMapper) UpdateUploadFileDeletedStatue(fileUuid string) {
 	mysqlClient.Model(&bo.FuFileDeleteLocalBO{}).
 		Where("file_uuid = ?", fileUuid).

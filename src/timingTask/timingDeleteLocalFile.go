@@ -17,13 +17,13 @@ func timingDeleteLocalFile() {
 
 	// 添加一个每 3 分钟执行一次的任务
 	// 分 时 日 月 周
-	_, err := c.AddFunc("*/30 * * * * *", deleteUploadFileTask)
+	_, err := c.AddFunc("*/50 * * * * *", deleteUploadFileTask)
 	if err != nil {
 		logTiming.Error("Error adding cron job:", err)
 		return
 	}
 
-	_, err2 := c.AddFunc("*/45 * * * * *", deleteCacheFileTask)
+	_, err2 := c.AddFunc("*/50 * * * * *", deleteCacheFileTask)
 	if err2 != nil {
 		logTiming.Error("Error adding cron job:", err2)
 		return

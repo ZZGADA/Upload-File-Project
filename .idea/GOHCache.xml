@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GoORMHelperCache">
+    <option name="schemaMapping">
+      <map>
+        <entry key="BootStrap">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Config">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="DataBases">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Directory">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileBatchDownloadVO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/vo/fileBatchDownloadVO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileBatchLoadDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/FileBatchLoadDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileDeleteDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/fileDeleteDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileDownloadDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/fileDownloadDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileDownloadService">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/service/fileDownloadService.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileDownloadVO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/vo/fileDownloadVO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileInfoListDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/fileInfoListDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileInfoListVO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/vo/fileInfoListVO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileListDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/fileListDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileListTDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/fileListTDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileListVO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/vo/fileListVO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileMultiUploadVO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/vo/fileUploadMultiVO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileSearchDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/fileSearchDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileUpdateName">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/fileUpdateName.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileUpdateVO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/vo/fileUpdateNameVO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileUploadDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/fileUploadDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FileUploadService">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/service/fileUploadService.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FuFileBO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/bo/fuFileBO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FuFileDeleteLocalBO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/bo/fuFileDeleteLocalBO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="FuOrganizationBO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/bo/fuOrganizationBO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="LogConfig">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Message">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/mqMessageDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="MySQLConfig">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="NacosBootstrapConfig">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="NacosConfig">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="RabbitMQ">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/mq/rabbitMqServer.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="RabbitMqConfig">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/global/config.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Result">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/utils/resp/respUtils.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ResultCont">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/utils/resp/respUtils.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Server">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ServerOne">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/global/config.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="TransactionStudy">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/bo/transactionStudyBO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="UpLoadSingleFileOSSMqDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/upLoadOSSMqDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="UploadFileOssConsumer">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/mq/service/fileUploadOssConsumer.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="fileSearchService">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/service/fileService.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="fuFileBOMapper">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/mapper/fuFileMapper.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="fuFileDeleteLocalMapper">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/mapper/fuFileDeleteLocaMapper.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="fuOrganizationBOMapper">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/mapper/fuOrganizationMapper.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="logHook">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/log.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="ossServer">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/oss/ossFileServices.go" />
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="scannedPathMapping">
+      <map>
+        <entry key="file://$PROJECT_DIR$/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724286884303" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724377756692" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/elasticSearch.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724321216674" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/log.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724124385246" />
+              <option name="schema">
+                <list>
+                  <option value="logHook" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/mysql.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724118166533" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/nacos.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724118166916" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/oss.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724377756689" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/parameter.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724138499099" />
+              <option name="schema">
+                <list>
+                  <option value="Config" />
+                  <option value="NacosConfig" />
+                  <option value="Directory" />
+                  <option value="BootStrap" />
+                  <option value="Server" />
+                  <option value="DataBases" />
+                  <option value="NacosBootstrapConfig" />
+                  <option value="MySQLConfig" />
+                  <option value="LogConfig" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/config/server.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724118166525" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/controller/checkHealthController.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724142949904" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/controller/fileController.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724293552302" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/controller/fileLoadController.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724403112698" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/controller/initController.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724377756687" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/bo/fuFileBO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724289575664" />
+              <option name="schema">
+                <list>
+                  <option value="FuFileBO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/bo/fuFileDeleteLocalBO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724289575658" />
+              <option name="schema">
+                <list>
+                  <option value="FuFileDeleteLocalBO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/bo/fuOrganizationBO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724289575668" />
+              <option name="schema">
+                <list>
+                  <option value="FuOrganizationBO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/bo/transactionStudyBO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1723959494375" />
+              <option name="schema">
+                <list>
+                  <option value="TransactionStudy" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/FileBatchLoadDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724234002414" />
+              <option name="schema">
+                <list>
+                  <option value="FileBatchLoadDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/fileDeleteDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724221782402" />
+              <option name="schema">
+                <list>
+                  <option value="FileDeleteDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/fileDownloadDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724203943697" />
+              <option name="schema">
+                <list>
+                  <option value="FileDownloadDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/fileInfoListDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724227816899" />
+              <option name="schema">
+                <list>
+                  <option value="FileInfoListDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/fileListDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724218883888" />
+              <option name="schema">
+                <list>
+                  <option value="FileListDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/fileListTDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724292895101" />
+              <option name="schema">
+                <list>
+                  <option value="FileListTDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/fileSearchDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724215291299" />
+              <option name="schema">
+                <list>
+                  <option value="FileSearchDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/fileUpdateName.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724220802450" />
+              <option name="schema">
+                <list>
+                  <option value="FileUpdateName" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/fileUploadDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724113679605" />
+              <option name="schema">
+                <list>
+                  <option value="FileUploadDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/mqMessageDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724145566147" />
+              <option name="schema">
+                <list>
+                  <option value="Message" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/upLoadOSSMqDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724144188660" />
+              <option name="schema">
+                <list>
+                  <option value="UpLoadSingleFileOSSMqDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/vo/fileBatchDownloadVO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724237961874" />
+              <option name="schema">
+                <list>
+                  <option value="FileBatchDownloadVO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/vo/fileDownloadVO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724237021678" />
+              <option name="schema">
+                <list>
+                  <option value="FileDownloadVO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/vo/fileInfoListVO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724233498609" />
+              <option name="schema">
+                <list>
+                  <option value="FileInfoListVO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/vo/fileListVO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724216677289" />
+              <option name="schema">
+                <list>
+                  <option value="FileListVO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/vo/fileUpdateNameVO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724220802242" />
+              <option name="schema">
+                <list>
+                  <option value="FileUpdateVO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/vo/fileUploadMultiVO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724314461130" />
+              <option name="schema">
+                <list>
+                  <option value="FileMultiUploadVO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/es/initElasticSearch.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724319677509" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/global/config.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724138499219" />
+              <option name="schema">
+                <list>
+                  <option value="RabbitMqConfig" />
+                  <option value="ServerOne" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/global/enum/isDeletedEnum.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724122865338" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/global/enum/isUploadOss.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724161636629" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/global/enum/ossPathEnum.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724123227335" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/global/enum/taskSituationEnum.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724144188685" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/global/parameter.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724319462184" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mapper/fuFileDeleteLocaMapper.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724378186324" />
+              <option name="schema">
+                <list>
+                  <option value="fuFileDeleteLocalMapper" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mapper/fuFileMapper.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724378186338" />
+              <option name="schema">
+                <list>
+                  <option value="fuFileBOMapper" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mapper/fuOrganizationMapper.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724378186369" />
+              <option name="schema">
+                <list>
+                  <option value="fuOrganizationBOMapper" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mapper/initMapper.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724118166530" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/middleWare/fileInterceptor.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724378186365" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/middleWare/headerInterceptor.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724378186372" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/middleWare/loggerMiddleWare.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724378186341" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mq/consumer.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724395481366" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mq/messageTransform.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724156952692" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mq/producer.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724158044041" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mq/rabbitMqServer.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724158241791" />
+              <option name="schema">
+                <list>
+                  <option value="RabbitMQ" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mq/service/fileUploadOssConsumer.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724320358743" />
+              <option name="schema">
+                <list>
+                  <option value="UploadFileOssConsumer" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/mq/service/initConsumerService.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724159252436" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/oss/initOssServer.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724205794984" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/oss/ossFileServices.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724225946993" />
+              <option name="schema">
+                <list>
+                  <option value="ossServer" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/service/fileDownloadService.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724396392969" />
+              <option name="schema">
+                <list>
+                  <option value="FileDownloadService" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/service/fileService.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724393359711" />
+              <option name="schema">
+                <list>
+                  <option value="fileSearchService" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/service/fileUploadService.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724403445474" />
+              <option name="schema">
+                <list>
+                  <option value="FileUploadService" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/service/initService.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724118166516" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/timingTask/initTimingTask.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724401375068" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/timingTask/timingDeleteLocalFile.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724396438537" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/utils/process/process.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724290204922" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/src/utils/resp/respUtils.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724233327787" />
+              <option name="schema">
+                <list>
+                  <option value="ResultCont" />
+                  <option value="Result" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="tableStructMapping">
+      <map>
+        <entry key="boot_strap" value="BootStrap" />
+        <entry key="config" value="Config" />
+        <entry key="data_bases" value="DataBases" />
+        <entry key="directory" value="Directory" />
+        <entry key="file_batch_download_vo" value="FileBatchDownloadVO" />
+        <entry key="file_batch_load_dto" value="FileBatchLoadDTO" />
+        <entry key="file_delete_dto" value="FileDeleteDTO" />
+        <entry key="file_download_dto" value="FileDownloadDTO" />
+        <entry key="file_download_service" value="FileDownloadService" />
+        <entry key="file_download_vo" value="FileDownloadVO" />
+        <entry key="file_info_list_dto" value="FileInfoListDTO" />
+        <entry key="file_info_list_vo" value="FileInfoListVO" />
+        <entry key="file_list_dto" value="FileListDTO" />
+        <entry key="file_list_tdto" value="FileListTDTO" />
+        <entry key="file_list_vo" value="FileListVO" />
+        <entry key="file_multi_upload_vo" value="FileMultiUploadVO" />
+        <entry key="file_search_dto" value="FileSearchDTO" />
+        <entry key="file_search_service" value="fileSearchService" />
+        <entry key="file_update_name" value="FileUpdateName" />
+        <entry key="file_update_vo" value="FileUpdateVO" />
+        <entry key="file_upload_dto" value="FileUploadDTO" />
+        <entry key="file_upload_service" value="FileUploadService" />
+        <entry key="fu_file_bo" value="FuFileBO" />
+        <entry key="fu_file_bo_mapper" value="fuFileBOMapper" />
+        <entry key="fu_file_delete_local_bo" value="FuFileDeleteLocalBO" />
+        <entry key="fu_file_delete_local_mapper" value="fuFileDeleteLocalMapper" />
+        <entry key="fu_organization_bo" value="FuOrganizationBO" />
+        <entry key="fu_organization_bo_mapper" value="fuOrganizationBOMapper" />
+        <entry key="log_config" value="LogConfig" />
+        <entry key="log_hook" value="logHook" />
+        <entry key="message" value="Message" />
+        <entry key="my_sql_config" value="MySQLConfig" />
+        <entry key="nacos_bootstrap_config" value="NacosBootstrapConfig" />
+        <entry key="nacos_config" value="NacosConfig" />
+        <entry key="oss_server" value="ossServer" />
+        <entry key="rabbit_mq" value="RabbitMQ" />
+        <entry key="rabbit_mq_config" value="RabbitMqConfig" />
+        <entry key="result" value="Result" />
+        <entry key="result_cont" value="ResultCont" />
+        <entry key="server" value="Server" />
+        <entry key="server_one" value="ServerOne" />
+        <entry key="transaction_study" value="TransactionStudy" />
+        <entry key="up_load_single_file_oss_mq_dto" value="UpLoadSingleFileOSSMqDTO" />
+        <entry key="upload_file_oss_consumer" value="UploadFileOssConsumer" />
+      </map>
+    </option>
+    <option name="lastTimeChecked" value="1724380055757" />
+  </component>
+</project>

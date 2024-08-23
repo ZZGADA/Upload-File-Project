@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-// LoggerMiddleware 是一个 Gin 中间件，用于使用 Logrus 记录 HTTP 请求日志
+// LoggerMiddleware  Gin 中间件，用于使用 Logrus 记录 HTTP 请求日志
 func LoggerMiddleware(logger *logrus.Logger) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// 开始时间

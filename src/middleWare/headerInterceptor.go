@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// HeaderInterceptor 请求头拦截器 权限校验
 func HeaderInterceptor() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// 获取请求头信息
