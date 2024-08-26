@@ -219,11 +219,11 @@ create table fu_file_delete_local
 ### 4. 云存储解决方案
 #### 4.1. 单文件上传解决方案
 
-> 磁盘结构划分
-> ~/                                           本地文件根目录
-> ～/organziationId/                     拼接机构ID
-> ～/organziationId/suffix              拼接文件名后缀
-> ～/organziationId/suffix/fileId     拼接文件ID    
+> 磁盘结构划分  
+> ~/                                           本地文件根目录   
+> ～/organziationId/                     拼接机构ID   
+> ～/organziationId/suffix              拼接文件名后缀   
+> ～/organziationId/suffix/fileId     拼接文件ID       
 #### 4.2. 具体实现
 > 增设单文件上传接口：/uploadFile/singleFile
 > 前端通过form表单（使用multipart/form-data编码）将文件上传到后端
