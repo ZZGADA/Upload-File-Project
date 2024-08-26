@@ -44,9 +44,9 @@ func (mapper *fuFileBOMapper) UpdateFileName(fileUuid string, newFileName string
 
 // GetOneFile // 获取file信息
 func (mapper *fuFileBOMapper) GetOneFile(fileUuid string) *bo.FuFileBO {
-	var fuFileBO *bo.FuFileBO = &bo.FuFileBO{}
-	mysqlClient.Where("is_deleted = ? and file_uuid = ?", enum.NoneDeleted.ToInt32(), fileUuid).First(fuFileBO)
-	return fuFileBO
+	var fuFileBO bo.FuFileBO
+	mysqlClient.Where("is_deleted = ? and file_uuid = ?", enum.NoneDeleted.ToInt32(), fileUuid).First(&fuFileBO)
+	return &fuFileBO
 }
 
 // GetOneFileOrg //获取文件和org信息

@@ -6,6 +6,10 @@ import (
 	"fmt"
 )
 
+type Student struct {
+	name string
+}
+
 func main() {
 	config.LoadResource("application.yaml")
 
@@ -13,4 +17,5 @@ func main() {
 	if err := config.Router.Run(runPort); err != nil {
 		global.Log.Panicf("gin start panic,%#v", err)
 	}
+
 }
