@@ -75,7 +75,7 @@
 #### 2.3. 数据库结构
 
 ##### 2.3.1 组织表：用于存储组织信息（组织UUID、组织名称等）
-```sql
+```mysql
 -- auto-generated definition
 create table fu_organization
 (
@@ -94,7 +94,7 @@ create table fu_organization
 ```
 
 ##### 2.3.2 文件表：用于存储文件信息（OSS路径、文件UUID、文件后缀等）
-```sql
+```mysql
 -- auto-generated definition
 create table fu_file
 (
@@ -116,7 +116,7 @@ create table fu_file
 ) comment '文件信息';
 ```
 #####  2.3.3 待删除本地文件表：定时任务删除本地文件所需的表（文件UUID、文件是否删除的判断字段）
-```sql
+```mysql
 -- auto-generated definition
 create table fu_file_delete_local
 (
