@@ -9,6 +9,7 @@ type Config struct {
 	Server         Server                `yaml:"server" mapstructure:"server"`
 	Logs           LogConfig             `yaml:"log" mapstructure:"log"`
 	RabbitMqConfig global.RabbitMqConfig `yaml:"rabbitMq" mapstructure:"rabbitMq"`
+	EsConfig       ElasticSearchConfig   `yaml:"es" mapstructure:"es"`
 }
 
 // NacosConfig 结构体 配置了连接Nacos的参数
@@ -65,4 +66,9 @@ type LogConfig struct {
 	Level      string `yaml:"level" mapstructure:"level"`
 	DayFormat  string `yaml:"dayFormat" mapstructure:"dayFormat"`
 	TimeFormat string `yaml:"timeFormat" mapstructure:"timeFormat"`
+}
+
+type ElasticSearchConfig struct {
+	Host string `yaml:"host"`
+	Port int32  `yaml:"port"`
 }

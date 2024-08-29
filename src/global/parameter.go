@@ -2,9 +2,9 @@ package global
 
 import (
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
+	"github.com/elastic/go-elasticsearch/v8"
 	"github.com/nacos-group/nacos-sdk-go/v2/clients/config_client"
 	"github.com/nacos-group/nacos-sdk-go/v2/clients/naming_client"
-	"github.com/olivere/elastic/v7"
 	"github.com/sirupsen/logrus"
 	"gorm.io/gorm"
 )
@@ -15,7 +15,7 @@ var (
 	NacosConfigClient   config_client.IConfigClient
 	NacosServicesClient naming_client.INamingClient
 	OssClient           *oss.Client
-	ESClient            *elastic.Client
+	ESClient            *elasticsearch.Client
 )
 
 const (

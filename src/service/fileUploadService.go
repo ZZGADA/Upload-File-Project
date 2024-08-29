@@ -139,21 +139,23 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 	})
 
 	// 创建消息
-	message := mq.NewMessage(&dto.UpLoadSingleFileOSSMqDTO{
+	messageUpload := mq.NewMessage(&dto.UpLoadSingleFileOSSMqDTO{
 		OrganizationUuid: FuOrganizationBO.OrgUuid,
 		FileSuffix:       fileSuffix,
 		FileUuid:         fileUuidStr,
 		GroupId:          global.UpLoadsPath,
 	}, "UpLoadSingleFileOSSMqDTO", enum.TaskSingleFileUpload.ToInt64())
 
-	jsonData, err := json.Marshal(message)
+	jsonDataUpload, err := json.Marshal(messageUpload)
 	if err != nil {
 		logService.Fatalf("Error occurred during marshaling. Error: %s", err.Error())
 		resultStr = fileUuidStr
 		statusCode = http.StatusInternalServerError
 	}
+
 	// 生产者发送
-	mq.Producer(jsonData)
+	mq.Producer(jsonDataUpload, mq.RabbitMqUploadClient, "upload")
+	//mq.Producer(jsonData, mq.RabbitMqESClient, "es")
 
 	resultStr = fileUuidStr
 	statusCode = http.StatusOK

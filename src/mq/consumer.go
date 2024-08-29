@@ -7,14 +7,14 @@ import (
 )
 
 // Consumer 消费者订阅
-func Consumer() {
+func Consumer(rabbitMqClient *RabbitMQ, queueName string) {
 	// 初始化mq
 	mq := rabbitMqClient
 	//defer mq.ReleaseRes() // 完成任务释放资源
 
 	if closed := CheckRabbitClosed(mq.Channel); closed == 1 {
 		// channel 已关闭，重连一下
-		ReInitChannel()
+		ReInitChannel(queueName)
 	}
 
 	// 1.声明队列（两端都要声明，原因在生产者处已经说明）
@@ -60,7 +60,7 @@ func Consumer() {
 		select {
 		case message := <-msgChannel:
 			if closed := CheckRabbitClosed(mq.Channel); closed == 1 {
-				ReInitChannel()
+				ReInitChannel(queueName)
 			}
 
 			// 消息消费的处理中心

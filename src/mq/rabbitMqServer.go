@@ -13,7 +13,8 @@ import (
 )
 
 var RabbitMqConfig *global.RabbitMqConfig
-var rabbitMqClient *RabbitMQ
+var RabbitMqUploadClient *RabbitMQ
+var RabbitMqESClient *RabbitMQ
 var LogMq *logrus.Logger
 
 // UrlOrigin //账号：密码@rabbitmq服务器地址：端口号/vhost
@@ -46,7 +47,8 @@ func InitRabbitMqServer(mqConfig *global.RabbitMqConfig) {
 		RabbitMqConfig.Host,
 		RabbitMqConfig.Port,
 		RabbitMqConfig.VirtualHost)
-	rabbitMqClient = NewRabbitMq()
+	RabbitMqUploadClient = NewRabbitMq()
+	RabbitMqESClient = NewRabbitMqEs()
 
 	registerType("UpLoadSingleFileOSSMqDTO", reflect.TypeOf(dto.UpLoadSingleFileOSSMqDTO{}))
 
@@ -61,6 +63,27 @@ func NewRabbitMq() *RabbitMQ {
 		QueueName:   RabbitMqConfig.ServerOne.Queue,
 		Exchange:    RabbitMqConfig.ServerOne.Exchange,
 		RoutingKey:  RabbitMqConfig.ServerOne.RoutingKey,
+		Url:         Url,
+		ContentType: ContentType,
+	}
+
+	var err error
+	//创建rabbitmq连接
+	rabbitMQ.Connection, err = amqp.Dial(rabbitMQ.Url)
+	checkErr(err, "创建连接失败")
+
+	//创建Channel
+	rabbitMQ.Channel, err = rabbitMQ.Connection.Channel()
+	checkErr(err, "创建channel失败")
+
+	return rabbitMQ
+}
+
+func NewRabbitMqEs() *RabbitMQ {
+	rabbitMQ := &RabbitMQ{
+		QueueName:   RabbitMqConfig.ServerEs.Queue,
+		Exchange:    RabbitMqConfig.ServerEs.Exchange,
+		RoutingKey:  RabbitMqConfig.ServerEs.RoutingKey,
 		Url:         Url,
 		ContentType: ContentType,
 	}
@@ -102,11 +125,20 @@ func CheckRabbitClosed(ch *amqp.Channel) int64 {
 }
 
 // ReInitChannel channel重连接
-func ReInitChannel() {
-	rabbitMqClient = NewRabbitMq()
-	err := rabbitMqClient.Channel.Qos(1, 0, false)
-	if err != nil {
-		LogMq.Error("rabbitmq重连后设置Qos失败, error: %v", err)
+func ReInitChannel(clientName string) {
+	switch clientName {
+	case "upload":
+		RabbitMqUploadClient = NewRabbitMq()
+		err := RabbitMqUploadClient.Channel.Qos(1, 0, false)
+		if err != nil {
+			LogMq.Error("RabbitMqUploadClient重连后设置Qos失败, error: %v", err)
+		}
+	case "es":
+		RabbitMqESClient = NewRabbitMq()
+		err := RabbitMqESClient.Channel.Qos(1, 0, false)
+		if err != nil {
+			LogMq.Error("RabbitMqESClient重连后设置Qos失败, error: %v", err)
+		}
 	}
 }
 

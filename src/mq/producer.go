@@ -5,12 +5,12 @@ import (
 	"github.com/streadway/amqp"
 )
 
-func Producer(message []byte) {
+func Producer(message []byte, rabbitMqClient *RabbitMQ, queueName string) {
 	// 初始化mq
 	mq := rabbitMqClient
 	if closed := CheckRabbitClosed(mq.Channel); closed == 1 {
 		// channel 已关闭，重连一下
-		ReInitChannel()
+		ReInitChannel(queueName)
 	}
 
 	// 1.声明队列

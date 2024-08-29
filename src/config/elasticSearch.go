@@ -2,23 +2,25 @@ package config
 
 import (
 	"UploadFileProject/src/global"
-	"context"
 	"fmt"
-	"github.com/olivere/elastic/v7"
+	"github.com/elastic/go-elasticsearch/v8"
+	"log"
 )
 
+const Url = "http://%s:%d"
+
 func initESClient() {
-	esClient, err := elastic.NewClient(elastic.SetURL("http://localhost:9200"))
+	ESServerURL := fmt.Sprintf(Url, ProjectConfig.EsConfig.Host, ProjectConfig.EsConfig.Port)
+	es, err := elasticsearch.NewClient(elasticsearch.Config{Addresses: []string{ESServerURL}})
 	if err != nil {
-		panic(fmt.Sprintf("es init failed,%#v", err))
+		log.Fatalf("Error creating the client: %s", err)
 	}
 
-	// 检查Elasticsearch是否可用
-	info, code, err := esClient.Ping("http://localhost:9200").Do(context.Background())
+	// 打印 Elasticsearch 版本信息
+	res, err := es.Info()
 	if err != nil {
-		panic(fmt.Sprintf("Error pinging Elasticsearch: %s", err))
+		log.Fatalf("Error getting response: %s", err)
 	}
-
-	global.Log.Info("Elasticsearch returned with code %d and version %s\n", code, info.Version.Number)
-	global.ESClient = esClient
+	fmt.Println(res.String())
+	global.ESClient = es
 }

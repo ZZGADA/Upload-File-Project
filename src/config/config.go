@@ -32,7 +32,7 @@ func LoadResource(configFile string) {
 	pullNacosBootStrapConfig()
 	initMySQLClient()
 	initOssClient()
-	//initESClient()
+	initESClient()
 	initLog()
 	initServer()
 
@@ -45,7 +45,8 @@ func LoadResource(configFile string) {
 	oss.InitOssServer()
 	timingTask.InitTimingTask()
 
-	go mq.Consumer()
+	go mq.Consumer(mq.RabbitMqUploadClient)
+	go mq.Consumer(mq.RabbitMqESClient)
 }
 
 // 读取资源文件
