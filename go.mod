@@ -1,6 +1,8 @@
 module UploadFileProject
 
-go 1.20
+go 1.21
+
+toolchain go1.22.7
 
 require (
 	github.com/aliyun/aliyun-oss-go-sdk v3.0.2+incompatible

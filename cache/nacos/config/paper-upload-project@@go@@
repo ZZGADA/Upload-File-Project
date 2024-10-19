@@ -27,3 +27,11 @@ rabbitMq:
         exchange: upload.direct
         queue: upload.queue
         routingKey: oss
+    serverTwo:
+        exchange: upload.direct
+        queue: synchronic-es.queue
+        routingKey: es
+
+es:
+    host: 127.0.0.1
+    port: 9200

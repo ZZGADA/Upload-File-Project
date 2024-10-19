@@ -146,7 +146,15 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 		GroupId:          global.UpLoadsPath,
 	}, "UpLoadSingleFileOSSMqDTO", enum.TaskSingleFileUpload.ToInt64())
 
+	messageSyn := mq.NewMessage(&dto.SynEsDTO{
+		FileUuid:         fileUuidStr,
+		FileOriginalName: fileOriginalName,
+		FileSuffix:       fileSuffix,
+	}, "SynEsDTO", enum.TaskSynFileEs.ToInt64())
+
 	jsonDataUpload, err := json.Marshal(messageUpload)
+	jsonDataSyn, err := json.Marshal(messageSyn)
+
 	if err != nil {
 		logService.Fatalf("Error occurred during marshaling. Error: %s", err.Error())
 		resultStr = fileUuidStr
@@ -155,7 +163,7 @@ func (fileUpload *FileUploadService) saveFile(fileUploadDTO *dto.FileUploadDTO) 
 
 	// 生产者发送
 	mq.Producer(jsonDataUpload, mq.RabbitMqUploadClient, "upload")
-	//mq.Producer(jsonData, mq.RabbitMqESClient, "es")
+	mq.Producer(jsonDataSyn, mq.RabbitMqESClient, "es")
 
 	resultStr = fileUuidStr
 	statusCode = http.StatusOK

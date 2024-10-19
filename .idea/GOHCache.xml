@@ -31,6 +31,13 @@
             </set>
           </value>
         </entry>
+        <entry key="ElasticSearchConfig">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="FileBatchDownloadVO">
           <value>
             <set>
@@ -206,6 +213,28 @@
             </set>
           </value>
         </entry>
+        <entry key="Pod">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/module/pod.go" />
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/pod.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="PodResource">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/pod.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="PodTcp">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/entity/tcp.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="RabbitMQ">
           <value>
             <set>
@@ -238,13 +267,58 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/src/config/parameter.go" />
+              <option value="file://$PROJECT_DIR$/src/global/config.go" />
             </set>
           </value>
         </entry>
-        <entry key="ServerOne">
+        <entry key="Student">
           <value>
             <set>
-              <option value="file://$PROJECT_DIR$/src/global/config.go" />
+              <option value="file://$PROJECT_DIR$/main.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="SynEsDTO">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/entity/dto/synEsDTO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="SynFileEsConsumer">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/src/mq/service/fileSycEsConsumer.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="TCPConnectStrategy">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/strategies/tcpConnect.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="Tcp">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/entity/tcp.go" />
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/tcp.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="TcpConnectResource">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/entity/tcp.go" />
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/tcp.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="TcpResource">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/interface/resource.go" />
             </set>
           </value>
         </entry>
@@ -252,6 +326,13 @@
           <value>
             <set>
               <option value="file://$PROJECT_DIR$/src/entity/bo/transactionStudyBO.go" />
+            </set>
+          </value>
+        </entry>
+        <entry key="UnitResource">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/../Multiplexing /kubernetes/interface/resource.go" />
             </set>
           </value>
         </entry>
@@ -315,31 +396,189 @@
     </option>
     <option name="scannedPathMapping">
       <map>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /code/dynamicStaringPod.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727871279063" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /code/kubernetes.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727862450558" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/enum/resource.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727844505680" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/enum/resources.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727864452590" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/enum/restful.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727844768843" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/enum/subResouce.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727845267342" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/enum/subResourceType.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727846058259" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/global/parameter.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727877470370" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/interface/interface.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727866987459" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/interface/resource.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727869334108" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/interface/strategies.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727877470256" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727925876958" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/module/pod.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727871406473" />
+              <option name="schema">
+                <list>
+                  <option value="Pod" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/entity/tcp.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727869074963" />
+              <option name="schema">
+                <list>
+                  <option value="TcpConnectResource" />
+                  <option value="Tcp" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/pod.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727869075002" />
+              <option name="schema">
+                <list>
+                  <option value="Pod" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/resource/tcp.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727869334101" />
+              <option name="schema">
+                <list>
+                  <option value="TcpConnectResource" />
+                  <option value="Tcp" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/strategies/scaling_expansionByTcpConnect.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727869460129" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/../Multiplexing /kubernetes/strategies/tcpConnect.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1727926211832" />
+              <option name="schema">
+                <list>
+                  <option value="TCPConnectStrategy" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/main.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724286884303" />
+              <option name="lastModified" value="1724409107810" />
+              <option name="schema">
+                <list>
+                  <option value="Student" />
+                </list>
+              </option>
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/config/config.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724377756692" />
+              <option name="lastModified" value="1724927067977" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/config/elasticSearch.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724321216674" />
+              <option name="lastModified" value="1724921669749" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/config/log.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724124385246" />
+              <option name="lastModified" value="1724406984617" />
               <option name="schema">
                 <list>
                   <option value="logHook" />
@@ -351,28 +590,28 @@
         <entry key="file://$PROJECT_DIR$/src/config/mysql.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724118166533" />
+              <option name="lastModified" value="1724406984617" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/config/nacos.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724118166916" />
+              <option name="lastModified" value="1724406984618" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/config/oss.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724377756689" />
+              <option name="lastModified" value="1724406984618" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/config/parameter.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724138499099" />
+              <option name="lastModified" value="1724921036322" />
               <option name="schema">
                 <list>
                   <option value="Config" />
@@ -384,6 +623,7 @@
                   <option value="NacosBootstrapConfig" />
                   <option value="MySQLConfig" />
                   <option value="LogConfig" />
+                  <option value="ElasticSearchConfig" />
                 </list>
               </option>
             </ScannedPath>
@@ -392,42 +632,42 @@
         <entry key="file://$PROJECT_DIR$/src/config/server.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724118166525" />
+              <option name="lastModified" value="1724406984618" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/controller/checkHealthController.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724142949904" />
+              <option name="lastModified" value="1724406984618" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/controller/fileController.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724293552302" />
+              <option name="lastModified" value="1724807512016" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/controller/fileLoadController.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724403112698" />
+              <option name="lastModified" value="1724406984618" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/controller/initController.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724377756687" />
+              <option name="lastModified" value="1724406984618" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/entity/bo/fuFileBO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724289575664" />
+              <option name="lastModified" value="1724924807055" />
               <option name="schema">
                 <list>
                   <option value="FuFileBO" />
@@ -439,7 +679,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/bo/fuFileDeleteLocalBO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724289575658" />
+              <option name="lastModified" value="1724406984618" />
               <option name="schema">
                 <list>
                   <option value="FuFileDeleteLocalBO" />
@@ -451,7 +691,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/bo/fuOrganizationBO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724289575668" />
+              <option name="lastModified" value="1724406984618" />
               <option name="schema">
                 <list>
                   <option value="FuOrganizationBO" />
@@ -463,7 +703,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/bo/transactionStudyBO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1723959494375" />
+              <option name="lastModified" value="1724406984618" />
               <option name="schema">
                 <list>
                   <option value="TransactionStudy" />
@@ -475,7 +715,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/FileBatchLoadDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724234002414" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileBatchLoadDTO" />
@@ -487,7 +727,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/fileDeleteDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724221782402" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileDeleteDTO" />
@@ -499,7 +739,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/fileDownloadDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724203943697" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileDownloadDTO" />
@@ -511,7 +751,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/fileInfoListDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724227816899" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileInfoListDTO" />
@@ -523,7 +763,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/fileListDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724218883888" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileListDTO" />
@@ -535,7 +775,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/fileListTDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724292895101" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileListTDTO" />
@@ -547,7 +787,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/fileSearchDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724215291299" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileSearchDTO" />
@@ -559,7 +799,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/fileUpdateName.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724220802450" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileUpdateName" />
@@ -571,7 +811,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/fileUploadDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724113679605" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileUploadDTO" />
@@ -583,7 +823,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/dto/mqMessageDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724145566147" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="Message" />
@@ -592,10 +832,22 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/src/entity/dto/synEsDTO.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724925337671" />
+              <option name="schema">
+                <list>
+                  <option value="SynEsDTO" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/src/entity/dto/upLoadOSSMqDTO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724144188660" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="UpLoadSingleFileOSSMqDTO" />
@@ -607,7 +859,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/vo/fileBatchDownloadVO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724237961874" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileBatchDownloadVO" />
@@ -619,7 +871,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/vo/fileDownloadVO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724237021678" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileDownloadVO" />
@@ -631,7 +883,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/vo/fileInfoListVO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724233498609" />
+              <option name="lastModified" value="1724406984619" />
               <option name="schema">
                 <list>
                   <option value="FileInfoListVO" />
@@ -643,7 +895,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/vo/fileListVO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724216677289" />
+              <option name="lastModified" value="1724406984620" />
               <option name="schema">
                 <list>
                   <option value="FileListVO" />
@@ -655,7 +907,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/vo/fileUpdateNameVO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724220802242" />
+              <option name="lastModified" value="1724406984620" />
               <option name="schema">
                 <list>
                   <option value="FileUpdateVO" />
@@ -667,7 +919,7 @@
         <entry key="file://$PROJECT_DIR$/src/entity/vo/fileUploadMultiVO.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724314461130" />
+              <option name="lastModified" value="1724406984620" />
               <option name="schema">
                 <list>
                   <option value="FileMultiUploadVO" />
@@ -679,18 +931,18 @@
         <entry key="file://$PROJECT_DIR$/src/es/initElasticSearch.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724319677509" />
+              <option name="lastModified" value="1724406984620" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/global/config.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724138499219" />
+              <option name="lastModified" value="1724922869950" />
               <option name="schema">
                 <list>
                   <option value="RabbitMqConfig" />
-                  <option value="ServerOne" />
+                  <option value="Server" />
                 </list>
               </option>
             </ScannedPath>
@@ -699,42 +951,42 @@
         <entry key="file://$PROJECT_DIR$/src/global/enum/isDeletedEnum.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724122865338" />
+              <option name="lastModified" value="1724406984620" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/global/enum/isUploadOss.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724161636629" />
+              <option name="lastModified" value="1724406984620" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/global/enum/ossPathEnum.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724123227335" />
+              <option name="lastModified" value="1724406984620" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/global/enum/taskSituationEnum.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724144188685" />
+              <option name="lastModified" value="1724925198287" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/global/parameter.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724319462184" />
+              <option name="lastModified" value="1724921557404" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/mapper/fuFileDeleteLocaMapper.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724378186324" />
+              <option name="lastModified" value="1724406984620" />
               <option name="schema">
                 <list>
                   <option value="fuFileDeleteLocalMapper" />
@@ -746,7 +998,7 @@
         <entry key="file://$PROJECT_DIR$/src/mapper/fuFileMapper.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724378186338" />
+              <option name="lastModified" value="1724407987728" />
               <option name="schema">
                 <list>
                   <option value="fuFileBOMapper" />
@@ -758,7 +1010,7 @@
         <entry key="file://$PROJECT_DIR$/src/mapper/fuOrganizationMapper.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724378186369" />
+              <option name="lastModified" value="1724406984621" />
               <option name="schema">
                 <list>
                   <option value="fuOrganizationBOMapper" />
@@ -770,56 +1022,56 @@
         <entry key="file://$PROJECT_DIR$/src/mapper/initMapper.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724118166530" />
+              <option name="lastModified" value="1724406984621" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/middleWare/fileInterceptor.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724378186365" />
+              <option name="lastModified" value="1724406984621" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/middleWare/headerInterceptor.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724378186372" />
+              <option name="lastModified" value="1724406984621" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/middleWare/loggerMiddleWare.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724378186341" />
+              <option name="lastModified" value="1724406984621" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/mq/consumer.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724395481366" />
+              <option name="lastModified" value="1724927048226" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/mq/messageTransform.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724156952692" />
+              <option name="lastModified" value="1724406984621" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/mq/producer.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724158044041" />
+              <option name="lastModified" value="1724924084718" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/mq/rabbitMqServer.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724158241791" />
+              <option name="lastModified" value="1724924083175" />
               <option name="schema">
                 <list>
                   <option value="RabbitMQ" />
@@ -828,10 +1080,22 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/src/mq/service/fileSycEsConsumer.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1724927032205" />
+              <option name="schema">
+                <list>
+                  <option value="SynFileEsConsumer" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/src/mq/service/fileUploadOssConsumer.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724320358743" />
+              <option name="lastModified" value="1724406984621" />
               <option name="schema">
                 <list>
                   <option value="UploadFileOssConsumer" />
@@ -843,21 +1107,21 @@
         <entry key="file://$PROJECT_DIR$/src/mq/service/initConsumerService.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724159252436" />
+              <option name="lastModified" value="1724406984621" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/oss/initOssServer.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724205794984" />
+              <option name="lastModified" value="1724406984622" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/oss/ossFileServices.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724225946993" />
+              <option name="lastModified" value="1724406984622" />
               <option name="schema">
                 <list>
                   <option value="ossServer" />
@@ -869,7 +1133,7 @@
         <entry key="file://$PROJECT_DIR$/src/service/fileDownloadService.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724396392969" />
+              <option name="lastModified" value="1724406984622" />
               <option name="schema">
                 <list>
                   <option value="FileDownloadService" />
@@ -881,7 +1145,7 @@
         <entry key="file://$PROJECT_DIR$/src/service/fileService.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724393359711" />
+              <option name="lastModified" value="1724406984622" />
               <option name="schema">
                 <list>
                   <option value="fileSearchService" />
@@ -893,7 +1157,7 @@
         <entry key="file://$PROJECT_DIR$/src/service/fileUploadService.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724403445474" />
+              <option name="lastModified" value="1724926057882" />
               <option name="schema">
                 <list>
                   <option value="FileUploadService" />
@@ -905,35 +1169,35 @@
         <entry key="file://$PROJECT_DIR$/src/service/initService.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724118166516" />
+              <option name="lastModified" value="1724406984622" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/timingTask/initTimingTask.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724401375068" />
+              <option name="lastModified" value="1724406984622" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/timingTask/timingDeleteLocalFile.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724396438537" />
+              <option name="lastModified" value="1724406984623" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/utils/process/process.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724290204922" />
+              <option name="lastModified" value="1724406984623" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/src/utils/resp/respUtils.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1724233327787" />
+              <option name="lastModified" value="1724406984623" />
               <option name="schema">
                 <list>
                   <option value="ResultCont" />
@@ -951,6 +1215,7 @@
         <entry key="config" value="Config" />
         <entry key="data_bases" value="DataBases" />
         <entry key="directory" value="Directory" />
+        <entry key="elastic_search_config" value="ElasticSearchConfig" />
         <entry key="file_batch_download_vo" value="FileBatchDownloadVO" />
         <entry key="file_batch_load_dto" value="FileBatchLoadDTO" />
         <entry key="file_delete_dto" value="FileDeleteDTO" />
@@ -982,17 +1247,27 @@
         <entry key="nacos_bootstrap_config" value="NacosBootstrapConfig" />
         <entry key="nacos_config" value="NacosConfig" />
         <entry key="oss_server" value="ossServer" />
+        <entry key="pod" value="Pod" />
+        <entry key="pod_resource" value="PodResource" />
+        <entry key="pod_tcp" value="PodTcp" />
         <entry key="rabbit_mq" value="RabbitMQ" />
         <entry key="rabbit_mq_config" value="RabbitMqConfig" />
         <entry key="result" value="Result" />
         <entry key="result_cont" value="ResultCont" />
         <entry key="server" value="Server" />
-        <entry key="server_one" value="ServerOne" />
+        <entry key="student" value="Student" />
+        <entry key="syn_es_dto" value="SynEsDTO" />
+        <entry key="syn_file_es_consumer" value="SynFileEsConsumer" />
+        <entry key="tcp" value="Tcp" />
+        <entry key="tcp_connect_resource" value="TcpConnectResource" />
+        <entry key="tcp_connect_strategy" value="TCPConnectStrategy" />
+        <entry key="tcp_resource" value="TcpResource" />
         <entry key="transaction_study" value="TransactionStudy" />
+        <entry key="unit_resource" value="UnitResource" />
         <entry key="up_load_single_file_oss_mq_dto" value="UpLoadSingleFileOSSMqDTO" />
         <entry key="upload_file_oss_consumer" value="UploadFileOssConsumer" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1724380055757" />
+    <option name="lastTimeChecked" value="1727844255388" />
   </component>
 </project>

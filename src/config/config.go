@@ -45,8 +45,8 @@ func LoadResource(configFile string) {
 	oss.InitOssServer()
 	timingTask.InitTimingTask()
 
-	go mq.Consumer(mq.RabbitMqUploadClient)
-	go mq.Consumer(mq.RabbitMqESClient)
+	go mq.Consumer(mq.RabbitMqUploadClient, "upload")
+	go mq.Consumer(mq.RabbitMqESClient, "es")
 }
 
 // 读取资源文件
